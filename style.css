@@ -88,3 +88,15 @@ h3{font-size:1.05rem; margin:0 0 6px 0}
   .menu > li > a, .dropbtn{padding:6px 10px}
   .hero-min h1{font-size:1.6rem}
     }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+header .logo {
+  height: 40px;
+  width: auto;
+}
