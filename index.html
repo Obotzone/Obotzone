@@ -1,40 +1,122 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <title>Obotzone – Teknologi, Eksperimen, dan Proyek</title>
-  <meta name="description" content="Obot suka teknologi, bereksperimen, dan menulis catatan praktis tentang website, VPS, bot, otomasi, serta proyek nyata." />
+  <title>Obotzone — Technology • Projects • Notes</title>
+  <meta name="description" content="Tech enthusiast focusing on practical projects, clear documentation, and continuous learning." />
   <link rel="canonical" href="https://obotzone.id/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Obotzone – Teknologi, Eksperimen, dan Proyek" />
-  <meta property="og:description" content="Catatan, proyek, dan eksperimen seputar website, VPS, bot, dan otomasi." />
+  <meta property="og:title" content="Obotzone — Technology • Projects • Notes" />
+  <meta property="og:description" content="Clean, simple portfolio showcasing tech work and learning notes." />
   <meta property="og:url" content="https://obotzone.id/" />
   <meta property="og:image" content="https://obotzone.id/og-default.jpg" />
-  <meta property="og:locale" content="id_ID" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Obotzone – Teknologi, Eksperimen, dan Proyek" />
-  <meta name="twitter:description" content="Catatan, proyek, dan eksperimen seputar website, VPS, bot, dan otomasi." />
-  <meta name="twitter:image" content="https://obotzone.id/og-default.jpg" />
-
-  <!-- PWA basics (opsional) -->
   <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- Top navigation with dropdown -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">Obotzone</a>
+      <nav aria-label="Primary">
+        <ul class="menu">
+          <li><a href="/">Home</a></li>
+          <li class="has-dropdown">
+            <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Work</button>
+            <ul class="dropdown" aria-label="submenu">
+              <li><a href="/portofolio/">Portfolio Overview</a></li>
+              <li><a href="/portofolio/vpn-adguard.html">VPN + AdGuard</a></li>
+              <li><a href="/portofolio/bot-cs-telegram.html">Telegram CS Bot</a></li>
+            </ul>
+          </li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Obot",
-    "url":"https://obotzone.id/",
-    "email":"mailto:obotzone.contact@gmail.com",
-    "telephone":"+6287779794633",
-    "sameAs":[]
+  <!-- Hero: concise and professional -->
+  <section class="hero-min">
+    <div class="container">
+      <h1>Clear tech. Practical results.</h1>
+      <p>I design simple solutions around websites, automation, and private infrastructure—documented in plain English.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- At-a-glance / badges -->
+    <section class="quick-facts">
+      <ul class="badges">
+        <li>WordPress</li>
+        <li>Cloudflare Pages</li>
+        <li>VPS & HestiaCP</li>
+        <li>WireGuard</li>
+        <li>n8n · ChatGPT</li>
+        <li>Basic Device Repair</li>
+      </ul>
+    </section>
+
+    <!-- Services (informative, short) -->
+    <section id="services">
+      <h2>Services</h2>
+      <div class="grid-3">
+        <article class="card-min">
+          <h3>Website & Landing</h3>
+          <p>Fast, minimal pages for clear messaging and conversion. Example: <a href="https://hifibandung.com" target="_blank" rel="noopener">hifibandung.com</a>.</p>
+        </article>
+        <article class="card-min">
+          <h3>Automation & Bots</h3>
+          <p>n8n + ChatGPT flows for customer support and routine tasks on Telegram.</p>
+        </article>
+        <article class="card-min">
+          <h3>Private Networking</h3>
+          <p>Self-hosted VPN (WireGuard) with AdGuard DNS to reduce ads and tracking.</p>
+        </article>
+        <article class="card-min">
+          <h3>VPS Hosting</h3>
+          <p>HestiaCP setup: domain, SSL, email, and deployments with basic hardening.</p>
+        </article>
+        <article class="card-min">
+          <h3>Light PC/Phone Fix</h3>
+          <p>Basic diagnostics, OS install (Windows/Linux/Office), screen/port button fixes.</p>
+        </article>
+        <article class="card-min">
+          <h3>Docs & Slides</h3>
+          <p>Concise documentation and clean PowerPoint for non-fluffy communication.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Selected work -->
+    <section>
+      <h2>Selected Work</h2>
+      <ul class="list-links">
+        <li><a href="/portofolio/">Portfolio overview</a> — brief summaries and links.</li>
+        <li><a href="/portofolio/vpn-adguard.html">VPN + AdGuard</a> — private network with network-level filtering.</li>
+        <li><a href="/portofolio/bot-cs-telegram.html">Telegram CS Bot</a> — automated first-response flows.</li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-box">
+        <p>Email: <a href="mailto:obotzone.contact@gmail.com">obotzone.contact@gmail.com</a></p>
+        <p>WhatsApp: <a href="https://wa.me/6287779794633" rel="noopener">+62 877 7979 4633</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>© 2025 Obotzone</p></div>
+  </footer>
+</body>
+</html>    "sameAs":[]
   }
   </script>
 
