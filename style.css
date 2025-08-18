@@ -1,40 +1,93 @@
-/* --------- Base --------- */
+/* ===== Base ===== */
 * { box-sizing: border-box; }
-:root {
-  --bg: #f8fafc;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --brand: #3b82f6;
-  --brand-dark: #2563eb;
-  --card: #ffffff;
-  --ring: rgba(59,130,246,0.25);
-  --shadow: 0 8px 24px rgba(0,0,0,0.06);
-  --radius: 14px;
+:root{
+  --bg:#ffffff; --ink:#0f172a; --muted:#64748b;
+  --brand:#0ea5e9; --brand-dark:#0284c7;
+  --line:#e2e8f0; --card:#f8fafc;
+  --radius:14px; --shadow:0 8px 24px rgba(2,8,23,.06);
 }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
+html,body{margin:0}
+body{
+  font-family: ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  color:var(--ink); background:var(--bg); line-height:1.7;
+}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* ===== Header / Nav with dropdown (no JS) ===== */
+.site-header{
+  border-bottom:1px solid var(--line);
+  background:#fff; position:sticky; top:0; z-index:50;
+}
+.nav{display:flex; align-items:center; justify-content:space-between; min-height:60px}
+.brand{font-weight:800; letter-spacing:.2px; color:var(--ink)}
+.menu{list-style:none; margin:0; padding:0; display:flex; gap:14px; align-items:center}
+.menu > li > a, .dropbtn{
+  display:inline-block; padding:8px 12px; border-radius:10px; font-weight:600; color:var(--ink);
+}
+.menu > li > a:hover, .dropbtn:hover{background:var(--card); text-decoration:none}
+.has-dropdown{position:relative}
+.dropbtn{background:transparent; border:0; cursor:pointer}
+.has-dropdown:focus-within .dropdown,
+.has-dropdown:hover .dropdown{opacity:1; transform:translateY(0); pointer-events:auto}
+.dropdown{
+  position:absolute; top:100%; left:0; min-width:220px;
+  background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow);
+  padding:8px; margin-top:6px;
+  opacity:0; transform:translateY(4px); pointer-events:none; transition:.15s ease;
+}
+.dropdown li{list-style:none}
+.dropdown a{display:block; padding:8px 10px; border-radius:8px; color:var(--ink)}
+.dropdown a:hover{background:var(--card); text-decoration:none}
+
+/* ===== Hero (minimal) ===== */
+.hero-min{background:linear-gradient(180deg,#f8fbff,#fff); border-bottom:1px solid var(--line)}
+.hero-min .container{padding:44px 20px}
+.hero-min h1{margin:0 0 8px 0; font-size:2rem; letter-spacing:.2px}
+.hero-min p{margin:0; color:var(--muted)}
+
+/* ===== Sections ===== */
+main.container{padding:36px 20px}
+section{margin:30px 0}
+h2{font-size:1.35rem; margin:0 0 10px 0}
+h3{font-size:1.05rem; margin:0 0 6px 0}
+
+/* Quick badges */
+.badges{display:flex;flex-wrap:wrap;gap:8px; list-style:none; padding:0; margin:0}
+.badges li{
+  border:1px solid var(--line); background:var(--card);
+  padding:6px 10px; border-radius:999px; font-size:.9rem; color:#0b203a;
 }
 
-/* --------- Layout --------- */
-.wrap {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* Grid cards */
+.grid-3{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card-min{
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  padding:14px; box-shadow:var(--shadow);
 }
-main.wrap { padding: 48px 20px; }
-section { margin: 40px 0; }
-h1, h2, h3 { line-height: 1.25; letter-spacing: -0.01em; }
-h2 { font-size: 1.6rem; margin-bottom: 10px; }
-h3 { font-size: 1.15rem; margin-bottom: 6px; }
-p { margin: 10px 0; }
-a { color: var(--brand); text-decoration: none; }
-a:hover { text-decoration: underline; }
+.card-min p{color:var(--muted); margin:6px 0 0}
 
-/* --------- Hero --------- */
+/* Link list */
+.list-links{list-style:none; padding:0; margin:6px 0 0}
+.list-links li{padding:8px 0; border-bottom:1px dashed var(--line)}
+.list-links li:last-child{border-bottom:0}
+
+/* Contact */
+.contact-box{
+  background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px; box-shadow:var(--shadow)
+}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--line); background:#fff}
+.site-footer .container{padding:14px 20px; text-align:center; color:var(--muted)}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width:520px){
+  .menu{gap:8px}
+  .menu > li > a, .dropbtn{padding:6px 10px}
+  .hero-min h1{font-size:1.6rem}
+}/* --------- Hero --------- */
 .hero {
   background: linear-gradient(135deg, var(--brand), var(--brand-dark));
   color: #fff;
