@@ -102,7 +102,7 @@ header .logo {
 }
 
 .hero-logo {
-  height: 80px;   /* ukuran logo */
+  height: auto;   /* ukuran logo */
   width: auto;
   margin-bottom: 16px; /* jarak ke tulisan */
                                                                    }
