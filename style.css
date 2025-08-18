@@ -47,10 +47,11 @@ a:hover{text-decoration:underline}
 .hero-min h1{margin:0 0 8px 0; font-size:2rem; letter-spacing:.2px}
 .hero-min p{margin:0; color:var(--muted)}
 .hero-logo {
-  max-width: 180px;   /* batas lebar maksimum logo */
-  width: 100%;        /* biar fleksibel di layar kecil */
-  height: auto;       /* jaga proporsi */
-  margin-bottom: 16px;
+  max-width: 160px; /* batas maksimum */
+  width: 100%;
+  height: auto;
+  margin: 0 auto 16px auto; /* auto kiri kanan = center */
+  display: block;
 }
 
 
