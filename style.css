@@ -46,6 +46,13 @@ a:hover{text-decoration:underline}
 .hero-min .container{padding:44px 20px}
 .hero-min h1{margin:0 0 8px 0; font-size:2rem; letter-spacing:.2px}
 .hero-min p{margin:0; color:var(--muted)}
+.hero-logo {
+  max-width: 180px;   /* batas lebar maksimum logo */
+  width: 100%;        /* biar fleksibel di layar kecil */
+  height: auto;       /* jaga proporsi */
+  margin-bottom: 16px;
+}
+
 
 /* ===== Sections ===== */
 main.container{padding:36px 20px}
@@ -101,10 +108,4 @@ header .logo {
   width: auto;
 }
 
-.hero-logo {
-  max-width: 180px;   /* batas lebar maksimum logo */
-  width: 100%;        /* biar fleksibel di layar kecil */
-  height: auto;       /* jaga proporsi */
-  margin-bottom: 16px;
-}
                                                                    }
