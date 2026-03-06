@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis Rekam Data Seluler</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet CSS & JS (Untuk Peta) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .file-drop-area {
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        .file-drop-area.dragover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        /* Penyesuaian untuk popup Leaflet */
+        .leaflet-popup-content-wrapper { border-radius: 0.75rem; }
+        /* Custom scrollbar untuk tabel */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-indigo-600 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i data-lucide="activity" class="w-6 h-6"></i>
+                <h1 class="text-xl font-bold tracking-tight">Analisis Rekam Data Seluler (MDR)</h1>
+            </div>
+            <div class="text-sm font-medium bg-indigo-700 px-3 py-1 rounded-full border border-indigo-500">
+                Target: <span id="target-number" class="font-bold">Memuat...</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        
+        <!-- Upload Section -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-8 file-drop-area" id="drop-area">
+            <div class="flex flex-col items-center justify-center text-center">
+                <div class="bg-indigo-50 p-3 rounded-full mb-3 text-indigo-600">
+                    <i data-lucide="upload-cloud" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-lg font-semibold mb-1">Unggah Data CSV Anda</h2>
+                <p class="text-sm text-slate-500 mb-4 max-w-md">Seret file CSV "Mobile Data Record" ke area ini atau klik tombol di bawah. (Mendukung format lama maupun format Falcon 2 terbaru).</p>
+                
+                <input type="file" id="file-input" class="hidden" accept=".csv" />
+                <label for="file-input" class="cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors shadow-sm text-sm">
+                    Pilih File CSV
+                </label>
+            </div>
+        </div>
+
+        <div id="loading-indicator" class="hidden flex justify-center items-center py-12">
+            <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-indigo-600"></div>
+            <span class="ml-3 font-medium text-slate-600">Memproses Data...</span>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-content" class="space-y-6">
+            
+            <!-- Summary Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-card rounded-2xl p-5 shadow-sm flex items-start gap-4 border-l-4 border-indigo-500">
+                    <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+                        <i data-lucide="database" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-slate-500">Total Interaksi Valid</p>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-1" id="stat-total">-</h3>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 shadow-sm flex items-start gap-4 border-l-4 border-purple-500">
+                    <div class="p-3 bg-purple-50 text-purple-600 rounded-xl">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-slate-500">Kontak Unik (B Number)</p>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-1" id="stat-unique-contacts">-</h3>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 shadow-sm flex items-start gap-4 border-l-4 border-emerald-500">
+                    <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+                        <i data-lucide="phone-incoming" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-slate-500">Voice Incoming</p>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-1" id="stat-voice-in">-</h3>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-5 shadow-sm flex items-start gap-4 border-l-4 border-sky-500">
+                    <div class="p-3 bg-sky-50 text-sky-600 rounded-xl">
+                        <i data-lucide="phone-outgoing" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-slate-500">Voice Outgoing</p>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-1" id="stat-voice-out">-</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="glass-card rounded-2xl p-6 shadow-sm">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-base font-semibold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="map" class="w-5 h-5 text-indigo-500"></i> Peta Lokasi Aktivitas
+                    </h3>
+                    <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">Klik marker untuk copy koordinat</span>
+                </div>
+                <div id="map" class="w-full h-[450px] rounded-xl border border-slate-200 z-0 relative bg-slate-100 flex items-center justify-center">
+                    <!-- Map will load here -->
+                </div>
+            </div>
+
+            <!-- Charts Row 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Interaction Types Chart -->
+                <div class="glass-card rounded-2xl p-6 shadow-sm flex flex-col">
+                    <h3 class="text-base font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <i data-lucide="pie-chart" class="w-5 h-5 text-indigo-500"></i> Komposisi Interaksi
+                    </h3>
+                    <div class="relative flex-grow min-h-[250px] flex items-center justify-center">
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Top Contacts Chart -->
+                <div class="glass-card rounded-2xl p-6 shadow-sm col-span-1 lg:col-span-2 flex flex-col">
+                    <h3 class="text-base font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <i data-lucide="bar-chart-2" class="w-5 h-5 text-indigo-500"></i> Top 10 Kontak (B Number)
+                    </h3>
+                    <div class="relative flex-grow min-h-[250px]">
+                        <canvas id="contactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row 2 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Top Locations Chart -->
+                <div class="glass-card rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-base font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-red-500"></i> Lokasi Paling Sering (Cell ID)
+                    </h3>
+                    <div class="relative min-h-[300px]">
+                        <canvas id="locationChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Activity Timeline Insight -->
+                <div class="glass-card rounded-2xl p-6 shadow-sm flex flex-col">
+                    <h3 class="text-base font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <i data-lucide="clock" class="w-5 h-5 text-indigo-500"></i> Riwayat Aktivitas (Maks 100)
+                    </h3>
+                    <div class="overflow-x-auto overflow-y-auto max-h-[300px] flex-grow custom-scrollbar border border-slate-100 rounded-lg">
+                        <table class="min-w-full text-left text-sm whitespace-nowrap relative">
+                            <thead class="uppercase tracking-wider text-slate-500 bg-slate-50 sticky top-0 z-10 shadow-sm">
+                                <tr>
+                                    <th scope="col" class="px-4 py-3 font-semibold">Waktu</th>
+                                    <th scope="col" class="px-4 py-3 font-semibold">Tipe</th>
+                                    <th scope="col" class="px-4 py-3 font-semibold">Kontak (B)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-logs" class="divide-y divide-slate-100 text-slate-700">
+                                <!-- Logs populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail Relasi Komunikasi (Link Analysis) -->
+            <div class="glass-card rounded-2xl p-6 shadow-sm mt-6">
+                <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2 mb-2">
+                            <i data-lucide="network" class="w-6 h-6 text-indigo-600"></i> Detail Semua Relasi Komunikasi
+                        </h3>
+                        <p class="text-sm text-slate-500">
+                            Menampilkan seluruh riwayat komunikasi dua arah secara mendetail, diurutkan dari interaksi terbanyak.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" id="search-relation" placeholder="Cari nomor kontak..." class="pl-9 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-64">
+                        </div>
+                        <div class="bg-indigo-50 text-indigo-700 px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap hidden sm:block">
+                            Total: <span id="total-relations-count">0</span> Kontak
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="relation-cards" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+                    <!-- Kartu relasi akan dimuat di sini oleh JavaScript -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-auto py-6 text-center text-sm text-slate-500">
+        <p>Infografis ini memproses data murni di dalam browser Anda. Data tidak dikirim ke internet.</p>
+    </footer>
+
+    <!-- Application Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Sample Data berdasarkan format Falcon 2 terbaru (Koma separator)
+        const sampleCSVData = `Falcon 2 - Mobile Data Record (6282251873313)
+Date Range: 29-01-2026- 03-03-2026
+Case: NABIRE
+Date Time,A NUMBER,A Latitude,A Longitude,A Location,B NUMBER,Type,Total
+2026-02-27 22:09:31,6282251873313,-3.36622,135.51019,"KARANG MULIA, NABIRE, KAB. NABIRE, PAPUA",6285244977777,VOICE OUTGOING,3 minutes 5 seconds 
+2026-02-27 21:56:56,6282251873313,-3.34344,135.51653,"SIRIWINI, NABIRE, KAB. NABIRE, PAPUA",6282346865573,VOICE OUTGOING,44 seconds 
+2026-02-27 21:17:09,6282251873313,-3.35048,135.51115,"NABARUA, NABIRE, KAB. NABIRE, PAPUA",6281247033879,VOICE OUTGOING,1 minutes 24 seconds 
+2026-01-29 08:25:15,6282251873313,-3.35404,135.5079,"OYEHE, NABIRE, KAB. NABIRE, PAPUA",313231323031,SMS INCOMING,Once`;
+
+        // Chart instances & Map
+        let typeChartInstance = null;
+        let contactChartInstance = null;
+        let locationChartInstance = null;
+        let mapInstance = null;
+        let mapMarkers = [];
+
+        // Colors
+        const colors = {
+            indigo: '#6366f1', purple: '#a855f7', emerald: '#10b981',
+            amber: '#f59e0b', rose: '#f43f5e', blue: '#3b82f6', sky: '#0ea5e9', slate: '#94a3b8'
+        };
+
+        // DOM Elements
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('file-input');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const dashboardContent = document.getElementById('dashboard-content');
+
+        // Drag & Drop Events
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); }, false);
+        });
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.add('dragover'), false);
+        });
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.remove('dragover'), false);
+        });
+
+        dropArea.addEventListener('drop', e => {
+            if(e.dataTransfer.files.length > 0) processFile(e.dataTransfer.files[0]);
+        }, false);
+        
+        fileInput.addEventListener('change', e => {
+            if(e.target.files.length > 0) processFile(e.target.files[0]);
+        }, false);
+
+        function processFile(file) {
+            if (!file.name.toLowerCase().endsWith('.csv')) {
+                alert('Mohon unggah file dengan format .csv');
+                return;
+            }
+
+            loadingIndicator.classList.remove('hidden');
+            dashboardContent.classList.add('opacity-30', 'pointer-events-none');
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const text = e.target.result;
+                setTimeout(() => {
+                    try {
+                        parseAndRenderData(text);
+                    } catch (error) {
+                        console.error("Gagal memproses data:", error);
+                        alert("Terjadi kesalahan saat membaca file CSV. Pastikan file valid.");
+                    } finally {
+                        loadingIndicator.classList.add('hidden');
+                        dashboardContent.classList.remove('opacity-30', 'pointer-events-none');
+                    }
+                }, 300);
+            };
+            reader.readAsText(file);
+        }
+
+        // CSV PARSER PINTAR: Menangani Delimiter (,) atau (;) dan Tanda Kutip ("")
+        function parseCSVLine(text, delimiter) {
+            let result = [];
+            let curVal = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                if (inQuotes) {
+                    if (char === '"') {
+                        if (i + 1 < text.length && text[i+1] === '"') {
+                            curVal += '"'; // kutip ganda (escaped quote)
+                            i++;
+                        } else {
+                            inQuotes = false; // tutup kutip
+                        }
+                    } else {
+                        curVal += char;
+                    }
+                } else {
+                    if (char === '"') {
+                        inQuotes = true; // buka kutip
+                    } else if (char === delimiter) {
+                        result.push(curVal);
+                        curVal = '';
+                    } else {
+                        curVal += char;
+                    }
+                }
+            }
+            result.push(curVal);
+            return result;
+        }
+
+        function parseAndRenderData(csvText) {
+            const lines = csvText.split(/\r?\n/);
+            let headerIndex = -1;
+            let delimiter = ';'; // default
+            
+            // Auto-Detect Header dan Delimiter
+            for (let i = 0; i < Math.min(lines.length, 20); i++) {
+                if (lines[i].includes("Date Time;") || lines[i].includes("A NUMBER;")) {
+                    headerIndex = i;
+                    delimiter = ';';
+                    break;
+                } else if (lines[i].includes("Date Time,") || lines[i].includes("A NUMBER,")) {
+                    headerIndex = i;
+                    delimiter = ',';
+                    break;
+                }
+            }
+
+            if (headerIndex === -1) {
+                throw new Error("Header CSV tidak ditemukan");
+            }
+
+            // Parse Header (bersihkan tanda kutip jika ada)
+            const headers = parseCSVLine(lines[headerIndex], delimiter).map(h => h.trim().replace(/^"|"$/g, ''));
+            let rawData = [];
+
+            // Parse baris demi baris
+            for (let i = headerIndex + 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                
+                const values = parseCSVLine(line, delimiter);
+                let row = {};
+                headers.forEach((h, idx) => {
+                    let val = values[idx] ? values[idx].trim() : "";
+                    row[h] = val.replace(/^"|"$/g, ''); // bersihkan sisa kutip
+                });
+                rawData.push(row);
+            }
+
+            // FILTER: Abaikan SMS Operator/Spam (tetap izinkan nomor > 9 digit)
+            let filteredData = rawData.filter(row => {
+                const type = row['Type'] ? row['Type'].toUpperCase() : '';
+                const bNum = row['B NUMBER'] || '';
+                
+                if (type.includes('SMS')) {
+                    let cleanNum = bNum.replace(/\D/g, ''); 
+                    if ((cleanNum.startsWith('62') || cleanNum.startsWith('0') || cleanNum.startsWith('8')) && cleanNum.length >= 9) {
+                        return true; 
+                    }
+                    return false; 
+                }
+                return true; 
+            });
+
+            if (filteredData.length === 0) {
+                alert("File berhasil dibaca, namun semua data terdeteksi sebagai SMS Operator/Spam sehingga tidak ada yang ditampilkan.");
+            }
+
+            renderDashboard(filteredData);
+        }
+
+        function parseDurationToSeconds(durationStr) {
+            if (!durationStr || durationStr.toLowerCase() === 'once') return 0;
+            
+            let totalSeconds = 0;
+            const str = durationStr.toLowerCase();
+            
+            const hourMatch = str.match(/(\d+)\s*hour/);
+            const minMatch = str.match(/(\d+)\s*minute/);
+            const secMatch = str.match(/(\d+)\s*second/);
+
+            if (hourMatch) totalSeconds += parseInt(hourMatch[1]) * 3600;
+            if (minMatch) totalSeconds += parseInt(minMatch[1]) * 60;
+            if (secMatch) totalSeconds += parseInt(secMatch[1]);
+
+            return totalSeconds;
+        }
+
+        function formatSecondsToReadable(totalSeconds) {
+            if (totalSeconds === 0) return "-";
+            
+            const h = Math.floor(totalSeconds / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+            
+            let parts = [];
+            if (h > 0) parts.push(`${h} Jam`);
+            if (m > 0) parts.push(`${m} Menit`);
+            if (s > 0 && h === 0) parts.push(`${s} Detik`);
+            
+            return parts.join(' ') || "0 Detik";
+        }
+
+        window.copyCoords = function(lat, lon) {
+            const text = `${lat}, ${lon}`;
+            let textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert(`Koordinat berhasil disalin: ${text}`);
+            } catch (err) {
+                alert(`Gagal menyalin. Silakan copy manual: ${text}`);
+            }
+            textArea.remove();
+        };
+
+        // Render Dashboard
+        function renderDashboard(data) {
+            const targetNumber = data.length > 0 ? (data[0]['A NUMBER'] || "Unknown") : "-";
+            document.getElementById('target-number').innerText = targetNumber;
+
+            let typeCounts = {};
+            let contactCounts = {};
+            let locationCounts = {};
+            let voiceInCount = 0;
+            let voiceOutCount = 0;
+            let validMapLocations = {};
+            let relations = {}; 
+
+            data.forEach(row => {
+                const type = row['Type'] || 'Unknown';
+                typeCounts[type] = (typeCounts[type] || 0) + 1;
+                
+                if (type.toUpperCase().includes('VOICE INCOMING')) voiceInCount++;
+                if (type.toUpperCase().includes('VOICE OUTGOING')) voiceOutCount++;
+
+                const contact = row['B NUMBER'];
+                const location = row['A Location'];
+                const durationText = row['Total'] || '';
+                const durationSeconds = parseDurationToSeconds(durationText);
+
+                if (contact) {
+                    contactCounts[contact] = (contactCounts[contact] || 0) + 1;
+
+                    if (!relations[contact]) {
+                        relations[contact] = {
+                            bNum: contact,
+                            totalInteractions: 0,
+                            voiceIn: 0, voiceInSec: 0,
+                            voiceOut: 0, voiceOutSec: 0,
+                            smsIn: 0, smsOut: 0
+                        };
+                    }
+                    
+                    relations[contact].totalInteractions++;
+
+                    if (type.toUpperCase().includes('VOICE INCOMING')) {
+                        relations[contact].voiceIn++;
+                        relations[contact].voiceInSec += durationSeconds;
+                    } else if (type.toUpperCase().includes('VOICE OUTGOING')) {
+                        relations[contact].voiceOut++;
+                        relations[contact].voiceOutSec += durationSeconds;
+                    } else if (type.toUpperCase().includes('SMS INCOMING')) {
+                        relations[contact].smsIn++;
+                    } else if (type.toUpperCase().includes('SMS OUTGOING')) {
+                        relations[contact].smsOut++;
+                    }
+                }
+
+                if (location && location.trim() !== "") {
+                    // Potong teks lokasi jika ada koma tambahan (biar grafik rapi)
+                    let shortLocation = location.split(',').slice(0, 2).join(', ').trim();
+                    locationCounts[shortLocation] = (locationCounts[shortLocation] || 0) + 1;
+                }
+
+                const lat = parseFloat(row['A Latitude']);
+                const lon = parseFloat(row['A Longitude']);
+                if (!isNaN(lat) && !isNaN(lon)) {
+                    let locKey = `${lat},${lon}`;
+                    if (!validMapLocations[locKey]) {
+                        validMapLocations[locKey] = { lat: lat, lon: lon, name: location || "Lokasi", count: 0 };
+                    }
+                    validMapLocations[locKey].count++;
+                }
+            });
+
+            // Update Stats
+            document.getElementById('stat-total').innerText = data.length.toLocaleString('id-ID');
+            document.getElementById('stat-unique-contacts').innerText = Object.keys(contactCounts).length.toLocaleString('id-ID');
+            document.getElementById('stat-voice-in').innerText = voiceInCount.toLocaleString('id-ID');
+            document.getElementById('stat-voice-out').innerText = voiceOutCount.toLocaleString('id-ID');
+
+            // === MAP INITIALIZATION ===
+            if (!mapInstance) {
+                mapInstance = L.map('map').setView([-2.5, 118], 5);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(mapInstance);
+            }
+            mapMarkers.forEach(m => mapInstance.removeLayer(m));
+            mapMarkers = [];
+            let bounds = [];
+
+            Object.values(validMapLocations).forEach(loc => {
+                let marker = L.marker([loc.lat, loc.lon]).addTo(mapInstance);
+                let popupContent = `
+                    <div class="text-sm pb-1 min-w-[200px]">
+                        <strong class="block mb-1 text-slate-800">${loc.name}</strong>
+                        <div class="mb-3 text-slate-600">Terdeteksi: <b>${loc.count}</b> kali interaksi</div>
+                        <div class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
+                            <code class="text-[11px] text-slate-700 font-mono">${loc.lat}, ${loc.lon}</code>
+                            <button onclick="copyCoords(${loc.lat}, ${loc.lon})" class="bg-indigo-600 text-white hover:bg-indigo-700 px-3 py-1.5 rounded text-xs font-semibold transition cursor-pointer shadow-sm">Copy</button>
+                        </div>
+                    </div>
+                `;
+                marker.bindPopup(popupContent);
+                mapMarkers.push(marker);
+                bounds.push([loc.lat, loc.lon]);
+            });
+
+            if (bounds.length > 0) {
+                mapInstance.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
+            } else {
+                mapInstance.setView([-2.5, 118], 5);
+            }
+            setTimeout(() => { if(mapInstance) mapInstance.invalidateSize(); }, 300);
+
+            // === TYPE CHART ===
+            const typeLabels = Object.keys(typeCounts);
+            const typeColors = typeLabels.map(l => {
+                const text = l.toUpperCase();
+                if(text.includes('VOICE INCOMING')) return colors.emerald;
+                if(text.includes('VOICE OUTGOING')) return colors.sky;
+                if(text.includes('SMS INCOMING')) return colors.amber;
+                if(text.includes('SMS OUTGOING')) return colors.rose;
+                return colors.indigo;
+            });
+
+            if (typeChartInstance) typeChartInstance.destroy();
+            const ctxType = document.getElementById('typeChart').getContext('2d');
+            typeChartInstance = new Chart(ctxType, {
+                type: 'doughnut',
+                data: { labels: typeLabels, datasets: [{ data: Object.values(typeCounts), backgroundColor: typeColors, borderWidth: 0, hoverOffset: 4 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } } }, cutout: '65%' }
+            });
+
+            // === CONTACT CHART ===
+            const sortedContacts = Object.entries(contactCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+            if (contactChartInstance) contactChartInstance.destroy();
+            const ctxContact = document.getElementById('contactChart').getContext('2d');
+            contactChartInstance = new Chart(ctxContact, {
+                type: 'bar',
+                data: { labels: sortedContacts.map(c => c[0]), datasets: [{ label: 'Interaksi', data: sortedContacts.map(c => c[1]), backgroundColor: colors.indigo, borderRadius: 4 }] },
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, grid: { color: '#f1f5f9' } }, x: { grid: { display: false } } }, plugins: { legend: { display: false } } }
+            });
+
+            // === LOCATION CHART ===
+            const sortedLocations = Object.entries(locationCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+            if (locationChartInstance) locationChartInstance.destroy();
+            const ctxLocation = document.getElementById('locationChart').getContext('2d');
+            locationChartInstance = new Chart(ctxLocation, {
+                type: 'bar',
+                data: { labels: sortedLocations.map(l => l[0].substring(0,25) + (l[0].length>25?'...':'')), datasets: [{ data: sortedLocations.map(l => l[1]), backgroundColor: colors.blue, borderRadius: 4 }] },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks:{stepSize:1} }, y: { grid: { display: false } } }, plugins: { legend: { display: false } } }
+            });
+
+            // === RECENT LOGS TABLE ===
+            const logsTbody = document.getElementById('recent-logs');
+            logsTbody.innerHTML = '';
+            const recentData = data.slice(0, 100); 
+            if(recentData.length === 0) {
+                logsTbody.innerHTML = `<tr><td colspan="3" class="px-4 py-4 text-center text-slate-500">Tidak ada data</td></tr>`;
+            } else {
+                recentData.forEach(row => {
+                    let tr = document.createElement('tr');
+                    tr.className = "hover:bg-indigo-50/50 transition-colors";
+                    let typeText = row['Type'] || '-';
+                    let typeStyle = "bg-slate-100 text-slate-700";
+                    if(typeText.toUpperCase().includes('VOICE INCOMING')) typeStyle = "bg-emerald-100 text-emerald-700";
+                    if(typeText.toUpperCase().includes('VOICE OUTGOING')) typeStyle = "bg-sky-100 text-sky-700";
+                    if(typeText.toUpperCase().includes('SMS INCOMING')) typeStyle = "bg-amber-100 text-amber-700";
+                    if(typeText.toUpperCase().includes('SMS OUTGOING')) typeStyle = "bg-rose-100 text-rose-700";
+                    tr.innerHTML = `
+                        <td class="px-4 py-3 text-slate-800">${row['Date Time'] || '-'}</td>
+                        <td class="px-4 py-3"><span class="px-2 py-1 text-[11px] font-bold tracking-wide rounded-md ${typeStyle}">${typeText}</span></td>
+                        <td class="px-4 py-3 font-mono text-slate-700 font-medium">${row['B NUMBER'] || '-'}</td>
+                    `;
+                    logsTbody.appendChild(tr);
+                });
+            }
+
+            // === LINK ANALYSIS (RELATION CARDS) ===
+            const cardsContainer = document.getElementById('relation-cards');
+            cardsContainer.innerHTML = '';
+
+            window.allRelationsData = Object.values(relations).sort((a,b) => b.totalInteractions - a.totalInteractions);
+            
+            window.renderRelationCards = function(searchTerm = "") {
+                const filteredRelations = window.allRelationsData.filter(rel => 
+                    rel.bNum.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+
+                const countEl = document.getElementById('total-relations-count');
+                if(countEl) countEl.innerText = filteredRelations.length.toLocaleString('id-ID');
+                
+                let htmlString = ""; 
+                
+                filteredRelations.forEach(rel => {
+                    const totalInDur = formatSecondsToReadable(rel.voiceInSec);
+                    const totalOutDur = formatSecondsToReadable(rel.voiceOutSec);
+
+                    htmlString += `
+                    <div class="border border-slate-200 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                        <div class="bg-slate-50 p-4 border-b border-slate-200 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-indigo-100 p-2.5 rounded-full text-indigo-600">
+                                    <i data-lucide="user" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-lg tracking-tight">${rel.bNum}</h4>
+                                    <p class="text-xs text-slate-500 font-medium">${rel.totalInteractions} kali interaksi</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 space-y-4">
+                            <div class="flex items-start gap-3 relative">
+                                <div class="mt-1 text-emerald-500 bg-emerald-50 p-1.5 rounded-lg border border-emerald-100">
+                                    <i data-lucide="arrow-down-left" class="w-4 h-4"></i>
+                                </div>
+                                <div class="flex-grow">
+                                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Menerima Panggilan/Pesan (In)</p>
+                                    <div class="bg-emerald-50/50 rounded-lg p-3 border border-emerald-50">
+                                        <div class="flex justify-between items-center text-sm text-slate-700 mb-1">
+                                            <span><i data-lucide="phone" class="w-3.5 h-3.5 inline mr-1 text-emerald-600"></i> ${rel.voiceIn}x Telepon</span>
+                                            <span class="font-semibold text-emerald-700">${totalInDur}</span>
+                                        </div>
+                                        <div class="text-sm text-slate-700">
+                                            <span><i data-lucide="message-square" class="w-3.5 h-3.5 inline mr-1 text-emerald-600"></i> ${rel.smsIn}x SMS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 relative">
+                                <div class="mt-1 text-sky-500 bg-sky-50 p-1.5 rounded-lg border border-sky-100">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </div>
+                                <div class="flex-grow">
+                                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Menghubungi (Out)</p>
+                                    <div class="bg-sky-50/50 rounded-lg p-3 border border-sky-50">
+                                        <div class="flex justify-between items-center text-sm text-slate-700 mb-1">
+                                            <span><i data-lucide="phone" class="w-3.5 h-3.5 inline mr-1 text-sky-600"></i> ${rel.voiceOut}x Telepon</span>
+                                            <span class="font-semibold text-sky-700">${totalOutDur}</span>
+                                        </div>
+                                        <div class="text-sm text-slate-700">
+                                            <span><i data-lucide="message-square" class="w-3.5 h-3.5 inline mr-1 text-sky-600"></i> ${rel.smsOut}x SMS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                });
+                
+                cardsContainer.innerHTML = htmlString;
+                lucide.createIcons();
+            };
+
+            renderRelationCards();
+
+            const searchInput = document.getElementById('search-relation');
+            if (searchInput) {
+                const newSearchInput = searchInput.cloneNode(true);
+                searchInput.parentNode.replaceChild(newSearchInput, searchInput);
+                newSearchInput.addEventListener('input', (e) => {
+                    renderRelationCards(e.target.value);
+                });
+            }
+        }
+
+        try {
+            parseAndRenderData(sampleCSVData);
+        } catch(e) {
+            console.error("Error memuat sampel awal:", e);
+        }
+
+    </script>
+</body>
+</html>
