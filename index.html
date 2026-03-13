@@ -6,16 +6,16 @@
 <title>Obotzone — Digital Craft &amp; Tech Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-  @font-face{font-family:'Syne';font-display:swap}
+  @font-face{font-family:'Inter';font-display:swap}
   @font-face{font-family:'Plus Jakarta Sans';font-display:swap}
   @font-face{font-family:'JetBrains Mono';font-display:swap}
 </style>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#09090b;color:rgba(255,255,255,0.82);overflow-x:hidden;-webkit-font-smoothing:antialiased;word-break:break-word;overflow-wrap:break-word}
+body{font-family:'Inter','Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#09090b;color:rgba(255,255,255,0.82);overflow-x:hidden;-webkit-font-smoothing:antialiased;word-break:break-word;overflow-wrap:break-word}
 a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:#09090b}
@@ -46,7 +46,7 @@ a{text-decoration:none;color:inherit}
 /* Navbar */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(9,9,11,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06);transition:box-shadow .3s}
 .nav-in{max-width:1100px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:white}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1rem;color:white}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nl{padding:8px 16px;border-radius:8px;font-size:.875rem;font-weight:500;color:rgba(255,255,255,0.5);transition:color .2s,background .2s}
 .nl:hover{color:white;background:rgba(255,255,255,0.06)}
@@ -57,29 +57,32 @@ a{text-decoration:none;color:inherit}
 .mnav a:hover{color:white;background:rgba(255,255,255,0.04)}
 /* Hero */
 .hero{min-height:100vh;display:flex;align-items:center;padding:100px 24px 80px;position:relative;overflow:hidden}
-.hero-in{max-width:1100px;margin:0 auto;width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:48px}
-.hero-left{flex:1;min-width:0;max-width:640px}
-.hero-h{font-family:'Syne',system-ui,sans-serif;font-weight:800;line-height:1.08;letter-spacing:-.02em;margin-bottom:20px;font-size:clamp(2rem,5vw,5.5rem)}
-.hero-sub3{display:block;color:rgba(255,255,255,0.5);font-weight:600;font-size:clamp(1.1rem,2.8vw,2.8rem);line-height:1.2}
-.hero-p{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:32px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,0.055);border-radius:14px;overflow:hidden;gap:1px}
+.hero-in{max-width:1100px;margin:0 auto;width:100%;display:flex;flex-direction:row;align-items:center;gap:64px}
+.hero-left{flex:1;min-width:0}
+.hero-h{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:20px;font-size:3.5rem;white-space:nowrap}
+.hero-sub3{display:block;color:rgba(255,255,255,0.45);font-weight:500;font-size:1.75rem;letter-spacing:-.01em;white-space:nowrap}
+.hero-p{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:32px;max-width:480px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,0.055);border-radius:14px;overflow:hidden;gap:1px;max-width:540px}
 .stat{background:rgba(255,255,255,0.025);padding:18px 10px;text-align:center}
-.sv{font-family:'Syne',system-ui,sans-serif;font-weight:800;font-size:1.35rem;margin-bottom:4px;background:linear-gradient(135deg,#22d3ee,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sl{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:rgba(255,255,255,0.32);letter-spacing:.1em;text-transform:uppercase}
-.fc{width:220px;flex-shrink:0;animation:floatY 7s ease-in-out infinite}
+.sv{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:4px;background:linear-gradient(135deg,#22d3ee,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sl{font-family:'JetBrains Mono',monospace;font-size:.54rem;color:rgba(255,255,255,0.32);letter-spacing:.1em;text-transform:uppercase}
+.fc{width:210px;flex-shrink:0;animation:floatY 7s ease-in-out infinite}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-/* mobile: stack vertically */
-@media(max-width:1024px){.fc{display:none!important}}
+@media(max-width:1100px){
+  .hero-h{font-size:2.8rem}
+  .hero-sub3{font-size:1.4rem}
+  .fc{display:none!important}
+}
 @media(max-width:768px){
-  .hero{padding:90px 20px 60px;align-items:flex-start}
+  .hero{padding:88px 20px 56px;align-items:flex-start}
   .hero-in{flex-direction:column;gap:0}
-  .hero-left{max-width:100%;width:100%}
-  .hero-h{font-size:clamp(2rem,9vw,3.2rem);letter-spacing:-.015em}
-  .hero-sub3{font-size:clamp(1rem,5vw,1.5rem)}
-  .hero-p{font-size:.95rem}
+  .hero-h{font-size:2.2rem;white-space:normal}
+  .hero-sub3{font-size:1.15rem;white-space:normal}
+  .hero-p{font-size:.95rem;max-width:100%}
+  .hero-ctas{flex-direction:column}
   .hero-ctas .btn{width:100%;justify-content:center}
-  .stats{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr);max-width:100%}
 }
 .scan{position:relative;height:2px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;margin-bottom:16px}
 .scan::after{content:'';position:absolute;top:0;left:0;width:33%;height:100%;background:linear-gradient(90deg,transparent,#22d3ee,transparent);animation:scanA 2.8s ease-in-out infinite}
@@ -92,7 +95,7 @@ a{text-decoration:none;color:inherit}
 .bw{grid-column:span 2}
 /* Service cards */
 .si{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0}
-.sh{font-family:'Syne',sans-serif;font-weight:600;color:white;margin-bottom:8px}
+.sh{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:white;margin-bottom:8px}
 .sp{color:var(--muted);font-size:.875rem;font-weight:300;line-height:1.75;margin-bottom:16px}
 .tr{display:flex;flex-wrap:wrap;gap:7px}
 /* Portfolio */
@@ -102,7 +105,7 @@ a{text-decoration:none;color:inherit}
 .prow:hover{background:rgba(255,255,255,0.03);padding-left:32px}
 .prow:hover .parr{opacity:1;transform:translate(0,0);color:var(--c)}
 .pid{font-family:'JetBrains Mono',monospace;font-size:.6rem;min-width:62px}
-.pname{font-family:'Syne',sans-serif;font-weight:600;font-size:1.1rem;color:white}
+.pname{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.1rem;color:white}
 .parr{opacity:0;transform:translate(-4px,4px);transition:all .25s;flex-shrink:0}
 .tp{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.32);border:1px solid rgba(255,255,255,0.08);padding:2px 8px;border-radius:100px}
 /* About */
@@ -233,7 +236,7 @@ select.fi option{background:#18181f;color:white}
     <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:56px" class="reveal">
       <div>
         <span class="lbl">// 02 — LAYANAN</span>
-        <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.9rem,4.5vw,3.2rem);line-height:1.1;color:white">Apa yang <span class="grad">Kami Kerjakan</span></h2>
+        <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(1.9rem,4.5vw,3.2rem);line-height:1.1;color:white">Apa yang <span class="grad">Kami Kerjakan</span></h2>
       </div>
       <p style="color:var(--muted);font-size:.9rem;font-weight:300;line-height:1.7;max-width:300px">End-to-end digital solutions — dari desain hingga deployment dan maintenance.</p>
     </div>
@@ -285,7 +288,7 @@ select.fi option{background:#18181f;color:white}
 
       <div class="glass-card" style="padding:28px;background:linear-gradient(135deg,rgba(34,211,238,0.06),rgba(52,211,153,0.03));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:200px">
         <span class="lbl" style="font-size:.6rem;margin-bottom:12px">// CUSTOM PROJECT</span>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:1.1rem;color:white;margin-bottom:8px">Ada Kebutuhan Khusus?</h3>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.1rem;color:white;margin-bottom:8px">Ada Kebutuhan Khusus?</h3>
         <p style="color:var(--muted);font-size:.85rem;font-weight:300;margin-bottom:20px">Kami terbuka untuk semua jenis proyek digital.</p>
         <a href="#kontak" class="btn bp" style="font-size:.8rem;padding:10px 22px">Diskusi Sekarang</a>
       </div>
@@ -300,7 +303,7 @@ select.fi option{background:#18181f;color:white}
     <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:56px" class="reveal">
       <div>
         <span class="lbl">// 03 — PORTFOLIO</span>
-        <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.9rem,4.5vw,3.2rem);line-height:1.1;color:white">Karya yang <span class="grad">Berbicara Sendiri</span></h2>
+        <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(1.9rem,4.5vw,3.2rem);line-height:1.1;color:white">Karya yang <span class="grad">Berbicara Sendiri</span></h2>
       </div>
       <a href="#kontak" class="btn bg" style="font-size:.85rem;padding:10px 22px;align-self:flex-end">Semua Proyek <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
@@ -399,16 +402,16 @@ select.fi option{background:#18181f;color:white}
     <div class="agrid">
       <div class="reveal">
         <span class="lbl">// 04 — TENTANG KAMI</span>
-        <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;margin-bottom:24px;color:white">Studio di balik <span class="grad">obotzone.id</span></h2>
+        <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;margin-bottom:24px;color:white">Studio di balik <span class="grad">obotzone.id</span></h2>
         <p style="color:var(--muted);font-weight:300;line-height:1.8;font-size:.95rem;margin-bottom:16px">Kami adalah tim kecil yang bersemangat tentang teknologi web modern. Berdiri sejak 2019, Obotzone telah membantu puluhan bisnis dan startup Indonesia tampil profesional di dunia digital.</p>
         <p style="color:var(--muted);font-weight:300;line-height:1.8;font-size:.95rem;margin-bottom:32px">Filosofi kami sederhana: website yang bagus bukan cuma soal tampilan &#8212; ia harus cepat, mudah dikelola, dan menghasilkan hasil nyata bagi bisnis kamu.</p>
         <a href="#kontak" class="btn bp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Ngobrol Bareng Kami</a>
       </div>
       <div class="vgrid reveal d2">
-        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#9889;</div><h4 style="font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Performance First</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Setiap proyek ditargetkan Lighthouse 95+</p></div>
-        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#128241;</div><h4 style="font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Mobile Native</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Dirancang untuk semua ukuran layar</p></div>
-        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#127758;</div><h4 style="font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Edge Deployed</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Cloudflare CDN di 300+ kota dunia</p></div>
-        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#11042;</div><h4 style="font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Open Source</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Kode bersih, terdokumentasi, maintainable</p></div>
+        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#9889;</div><h4 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Performance First</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Setiap proyek ditargetkan Lighthouse 95+</p></div>
+        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#128241;</div><h4 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Mobile Native</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Dirancang untuk semua ukuran layar</p></div>
+        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#127758;</div><h4 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Edge Deployed</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Cloudflare CDN di 300+ kota dunia</p></div>
+        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#11042;</div><h4 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Open Source</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Kode bersih, terdokumentasi, maintainable</p></div>
       </div>
     </div>
     <div class="reveal" style="margin-top:72px">
@@ -433,7 +436,7 @@ select.fi option{background:#18181f;color:white}
   <div class="wrap" style="position:relative;z-index:2;max-width:680px">
     <div class="reveal" style="text-align:center;margin-bottom:56px">
       <span class="lbl" style="text-align:center">// 06 — KONTAK</span>
-      <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);line-height:1.1;margin-bottom:16px;color:white">Siap Mulai <span class="grad">Proyek Bersama?</span></h2>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);line-height:1.1;margin-bottom:16px;color:white">Siap Mulai <span class="grad">Proyek Bersama?</span></h2>
       <p style="color:var(--muted);font-weight:300;line-height:1.7">Ceritakan kebutuhan digital kamu. Kami akan respons dalam 24 jam.</p>
     </div>
     <div class="glass-card reveal d1" style="padding:36px 40px">
@@ -465,7 +468,7 @@ select.fi option{background:#18181f;color:white}
       </form>
       <div id="success" style="display:none;text-align:center;padding:32px 0">
         <div style="width:52px;height:52px;border-radius:14px;background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.28);display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:600;color:white;font-size:1.2rem;margin-bottom:8px">Pesan Terkirim!</h3>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:white;font-size:1.2rem;margin-bottom:8px">Pesan Terkirim!</h3>
         <p style="color:var(--muted);font-size:.875rem;font-weight:300">Kami akan menghubungi kamu dalam 24 jam.</p>
       </div>
     </div>
@@ -486,7 +489,7 @@ select.fi option{background:#18181f;color:white}
       <div class="fbrand">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
           <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9L28 23L16 30L4 23L4 9Z" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.1)"/><path d="M16 8L22 11.5L22 18.5L16 22L10 18.5L10 11.5Z" fill="#22d3ee" opacity="0.7"/></svg>
-          <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:white">Obot<span class="grad">zone</span></span>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1rem;color:white">Obot<span class="grad">zone</span></span>
         </div>
         <p style="color:rgba(255,255,255,0.32);font-size:.85rem;font-weight:300;line-height:1.7;max-width:260px;margin-bottom:20px">Studio teknologi digital yang membangun produk web modern, cepat, dan elegan untuk bisnis Indonesia.</p>
         <div style="display:flex;gap:10px">
