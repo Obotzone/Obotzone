@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>UMKM Admin System – Aplikasi Administrasi Bisnis UMKM Indonesia</title>
+  <meta name="description" content="Kelola stok, penjualan, dan tagihan UMKM Anda lebih mudah dengan UMKM Admin System. Aplikasi offline, simpan data Excel, tanpa biaya berlangganan." />
+  <meta name="keywords" content="aplikasi umkm, manajemen stok, invoice umkm, administrasi bisnis, aplikasi toko, software umkm indonesia" />
+  <meta name="author" content="UMKM Admin System" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="UMKM Admin System – Administrasi Bisnis Lebih Mudah" />
+  <meta property="og:description" content="Kelola stok, penjualan, dan tagihan UMKM dalam satu aplikasi ringan berbasis web. Offline, aman, dan mudah digunakan." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Inline critical extras */
+    .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0; }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FLOATING WHATSAPP
+═══════════════════════════════════════════════════════════ -->
+<a href="https://wa.me/6287779794633" target="_blank" rel="noopener" class="wa-float" aria-label="Chat WhatsApp">
+  <div class="wa-pulse"></div>
+  <i class="fa-brands fa-whatsapp" style="color:#fff;font-size:26px;position:relative;z-index:1;"></i>
+</a>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Navigasi utama">
+  <div class="nav-inner container">
+
+    <a href="#" class="nav-logo" aria-label="UMKM Admin System – Beranda">
+      <div class="logo-icon">🏪</div>
+      <span>UMKM Admin</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#features">Fitur</a></li>
+      <li><a href="#screenshots">Screenshot</a></li>
+      <li><a href="#testimonials">Testimoni</a></li>
+      <li><a href="#pricing">Harga</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="https://wa.me/6287779794633" target="_blank" class="btn btn-primary btn-sm">
+        <i class="fa-brands fa-whatsapp"></i> Pesan Sekarang
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
+  <a href="#features">Fitur</a>
+  <a href="#screenshots">Screenshot</a>
+  <a href="#testimonials">Testimoni</a>
+  <a href="#pricing">Harga</a>
+  <a href="#faq">FAQ</a>
+  <a href="https://wa.me/6287779794633" target="_blank" style="color:#10b981;">
+    <i class="fa-brands fa-whatsapp"></i> Pesan Sekarang
+  </a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+<section id="hero" aria-label="Hero section">
+  <div class="hero-grid-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="hero-inner">
+    <!-- Left -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Aplikasi UMKM #1 Pilihan Pebisnis Lokal
+      </div>
+
+      <h1 class="hero-h1 sora">
+        Kelola <span class="accent">Stok, Penjualan,</span><br>
+        dan Tagihan UMKM<br>Lebih Mudah
+      </h1>
+
+      <p class="hero-sub">
+        Aplikasi Administrasi UMKM sederhana yang membantu bisnis Anda lebih rapi dan profesional — berjalan <strong style="color:#10b981;">100% offline</strong>, data tersimpan di Excel Anda sendiri.
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://wa.me/6287779794633" target="_blank" class="btn btn-primary btn-lg">
+          <i class="fa-brands fa-whatsapp"></i> Pesan Sekarang
+        </a>
+        <a href="#screenshots" class="btn btn-outline btn-lg">
+          <i class="fa-regular fa-circle-play"></i> Lihat Demo
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-val sora"><span data-count="500">0</span>+</div>
+          <div class="hero-stat-label">UMKM Menggunakan</div>
+        </div>
+        <div>
+          <div class="hero-stat-val sora"><span data-count="5">0</span> Menit</div>
+          <div class="hero-stat-label">Setup Pertama</div>
+        </div>
+        <div>
+          <div class="hero-stat-val sora">100%</div>
+          <div class="hero-stat-label">Offline & Aman</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: App Mockup -->
+    <div class="hero-right">
+      <div class="mockup-wrap">
+        <!-- Floating badges -->
+        <div class="float-badge float-badge-1">
+          <div class="icon-wrap">✅</div>
+          <div>
+            <div style="font-size:12px;color:#059669;font-weight:700;">Invoice Lunas</div>
+            <div style="font-size:11px;color:#94a3b8;">Rp 2.493.750</div>
+          </div>
+        </div>
+        <div class="float-badge float-badge-2" style="animation-delay:.8s">
+          <div class="icon-wrap">⚠️</div>
+          <div>
+            <div style="font-size:12px;color:#d97706;font-weight:700;">Stok Hampir Habis</div>
+            <div style="font-size:11px;color:#94a3b8;">1 produk perlu restok</div>
+          </div>
+        </div>
+
+        <div class="mockup-frame">
+          <div class="mockup-bar">
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+            <div class="url-bar">localhost:8080 — Dashboard</div>
+          </div>
+          <img src="images/dashboard.png" alt="Dashboard UMKM Admin System" class="mockup-img" loading="eager" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROBLEM SECTION
+═══════════════════════════════════════════════════════════ -->
+<section id="problem" class="section" aria-label="Masalah umum UMKM">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Kenali Masalahnya</div>
+      <h2 class="section-title">Apakah Anda Sering Mengalami ini?</h2>
+      <p class="section-sub">Banyak pemilik UMKM menghadapi tantangan administrasi yang sama setiap harinya.</p>
+    </div>
+
+    <div class="problem-grid">
+
+      <div class="problem-card reveal delay-1">
+        <div class="problem-icon">📦</div>
+        <div>
+          <h3>Stok Barang Tidak Terkontrol</h3>
+          <p>Sering kehabisan stok tiba-tiba atau malah kelebihan barang yang menumpuk karena tidak ada pencatatan yang rapi.</p>
+        </div>
+      </div>
+
+      <div class="problem-card reveal delay-2">
+        <div class="problem-icon">🔔</div>
+        <div>
+          <h3>Lupa Menagih Pelanggan</h3>
+          <p>Tagihan yang belum dibayar terlupakan begitu saja karena tidak ada pengingat otomatis, sehingga arus kas terganggu.</p>
+        </div>
+      </div>
+
+      <div class="problem-card reveal delay-3">
+        <div class="problem-icon">📝</div>
+        <div>
+          <h3>Pencatatan Penjualan Berantakan</h3>
+          <p>Catatan di buku tulis mudah hilang, susah dicari, dan tidak bisa dianalisis untuk mengambil keputusan bisnis.</p>
+        </div>
+      </div>
+
+      <div class="problem-card reveal delay-4">
+        <div class="problem-icon">📊</div>
+        <div>
+          <h3>Sulit Mengetahui Keuntungan Bisnis</h3>
+          <p>Tidak tahu persis berapa penjualan bulan ini, produk mana yang paling laku, atau berapa total piutang yang belum masuk.</p>
+        </div>
+      </div>
+
+      <div class="problem-card reveal delay-2">
+        <div class="problem-icon">🧾</div>
+        <div>
+          <h3>Invoice Dibuat Manual & Lambat</h3>
+          <p>Membuat tagihan satu per satu di Word atau Excel memakan waktu berjam-jam dan hasilnya tidak profesional.</p>
+        </div>
+      </div>
+
+      <div class="problem-card reveal delay-3">
+        <div class="problem-icon">👥</div>
+        <div>
+          <h3>Data Pelanggan Tidak Terorganisir</h3>
+          <p>Kontak pelanggan tersebar di WhatsApp, buku, dan kertas terpisah sehingga susah dihubungi saat ada promo atau tagihan.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SOLUTION
+═══════════════════════════════════════════════════════════ -->
+<section id="solution" class="section" aria-label="Solusi UMKM Admin System">
+  <div class="container">
+    <div class="solution-inner">
+
+      <!-- Image -->
+      <div class="solution-img-wrap reveal-left">
+        <div class="solution-chip solution-chip-2">
+          <i class="fa-solid fa-check"></i> Semua tagihan aman
+        </div>
+        <div class="solution-img-frame">
+          <img src="images/laporan.png" alt="Laporan & Analisis UMKM Admin System" loading="lazy" />
+        </div>
+        <div class="solution-chip solution-chip-1">
+          🏅 Produk Terlaris: Kopi Susu ABC
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="reveal-right">
+        <div class="section-label">Solusi Kami</div>
+        <h2 class="section-title">Solusi Administrasi Bisnis UMKM dalam Satu Aplikasi</h2>
+        <p style="font-size:16px;color:#475569;line-height:1.8;margin-bottom:8px;">
+          <strong>UMKM Admin System</strong> adalah aplikasi web ringan yang dirancang khusus untuk pebisnis lokal Indonesia. Tidak perlu keahlian teknologi — cukup klik dan mulai pakai.
+        </p>
+
+        <div class="solution-points">
+          <div class="solution-point">
+            <div class="solution-point-icon">📶</div>
+            <div>
+              <h4>100% Offline — Tidak Butuh Internet</h4>
+              <p>Jalankan di laptop/PC Windows Anda sendiri. Data tidak pernah keluar dari komputer Anda.</p>
+            </div>
+          </div>
+          <div class="solution-point">
+            <div class="solution-point-icon">💾</div>
+            <div>
+              <h4>Data Tersimpan di File Excel</h4>
+              <p>Backup otomatis ke .xlsx yang bisa dibuka langsung di Microsoft Excel kapan saja.</p>
+            </div>
+          </div>
+          <div class="solution-point">
+            <div class="solution-point-icon">⚡</div>
+            <div>
+              <h4>Setup 5 Menit, Langsung Pakai</h4>
+              <p>Klik dua kali JALANKAN.bat — sistem langsung terbuka di browser tanpa instalasi rumit.</p>
+            </div>
+          </div>
+          <div class="solution-point">
+            <div class="solution-point-icon">🏪</div>
+            <div>
+              <h4>Cocok untuk Semua Jenis UMKM</h4>
+              <p>Toko sembako, warung kopi, konveksi, bengkel, kuliner — semua bisa menggunakan sistem ini.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:36px;">
+          <a href="https://wa.me/6287779794633" target="_blank" class="btn btn-primary btn-lg">
+            <i class="fa-brands fa-whatsapp"></i> Dapatkan Sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FEATURES
+═══════════════════════════════════════════════════════════ -->
+<section id="features" class="section" aria-label="Fitur utama">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-label">Fitur Lengkap</div>
+      <h2 class="section-title" style="color:#fff;">Semua yang Anda Butuhkan,<br>Ada di Satu Tempat</h2>
+      <p class="section-sub">Dari stok hingga laporan, dari pelanggan hingga invoice — semuanya terintegrasi dalam satu sistem yang mudah digunakan.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal delay-1">
+        <div class="feature-icon">📦</div>
+        <h3>Manajemen Stok Produk</h3>
+        <p>Tambah, edit, dan pantau stok produk secara real-time. Sistem otomatis memberi peringatan saat stok di bawah batas minimum yang Anda tentukan.</p>
+      </div>
+
+      <div class="feature-card reveal delay-2">
+        <div class="feature-icon">👥</div>
+        <h3>Database Pelanggan</h3>
+        <p>Simpan semua data pelanggan lengkap beserta riwayat transaksi. Hubungi langsung via WhatsApp dari dalam aplikasi hanya dengan satu klik.</p>
+      </div>
+
+      <div class="feature-card reveal delay-3">
+        <div class="feature-icon">🧾</div>
+        <h3>Generator Invoice Otomatis</h3>
+        <p>Buat invoice profesional dalam hitungan detik. Nomor invoice otomatis, pilih produk dari daftar, hitung total otomatis, dan siap cetak atau kirim.</p>
+      </div>
+
+      <div class="feature-card reveal delay-1">
+        <div class="feature-icon">🔔</div>
+        <h3>Pengingat Jatuh Tempo</h3>
+        <p>Tidak ada lagi tagihan yang terlupakan. Sistem menampilkan daftar invoice hampir jatuh tempo dengan indikator warna — oranye untuk &lt;3 hari, merah jika terlambat.</p>
+      </div>
+
+      <div class="feature-card reveal delay-2">
+        <div class="feature-icon">📈</div>
+        <h3>Laporan & Analisis Bisnis</h3>
+        <p>Grafik penjualan per bulan, donut chart status pembayaran, daftar produk terlaris, dan ringkasan piutang — semua tersaji visual dan mudah dipahami.</p>
+      </div>
+
+      <div class="feature-card reveal delay-3">
+        <div class="feature-icon">📊</div>
+        <h3>Database Excel Terintegrasi</h3>
+        <p>Semua data tersimpan di file .xlsx yang bisa dibuka langsung di Microsoft Excel. Import dan export data kapan saja sebagai backup permanen Anda.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ADVANTAGES / KEUNGGULAN
+═══════════════════════════════════════════════════════════ -->
+<section id="advantages" class="section" aria-label="Keunggulan produk">
+  <div class="container">
+    <div class="advantages-inner">
+
+      <!-- Checklist -->
+      <div class="reveal-left">
+        <div class="section-label">Mengapa Pilih Kami?</div>
+        <h2 class="section-title">Keunggulan yang Bikin Bisnis<br>Anda Lebih Tenang</h2>
+        <p style="color:#475569;margin-bottom:28px;line-height:1.75;">Tidak seperti software mahal yang butuh berlangganan tiap bulan — UMKM Admin System adalah <strong>bayar sekali, pakai selamanya</strong>.</p>
+
+        <ul class="checklist">
+          <li class="check-item">
+            <div class="check-icon">✓</div>
+            <span>Bisa digunakan 100% offline — tidak butuh internet</span>
+          </li>
+          <li class="check-item">
+            <div class="check-icon">✓</div>
+            <span>Mudah digunakan — tanpa pelatihan khusus</span>
+          </li>
+          <li class="check-item">
+            <div class="check-icon">✓</div>
+            <span>Data tersimpan aman di komputer Anda sendiri</span>
+          </li>
+          <li class="check-item">
+            <div class="check-icon">✓</div>
+            <span>Cocok untuk semua jenis usaha UMKM</span>
+          </li>
+          <li class="check-item">
+            <div class="check-icon">✓</div>
+            <span>Bayar sekali — tidak ada biaya berlangganan</span>
+          </li>
+          <li class="check-item">
+            <div class="check-icon">✓</div>
+            <span>Backup data ke Excel kapan saja dengan satu klik</span>
+          </li>
+          <li class="check-item">
+            <div class="check-icon">✓</div>
+            <span>Cetak invoice langsung dari browser</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Stats -->
+      <div class="reveal-right">
+        <div class="adv-stats-grid">
+          <div class="adv-stat">
+            <div class="big sora"><span data-count="500">0</span>+</div>
+            <div class="label">Pengguna Aktif</div>
+          </div>
+          <div class="adv-stat">
+            <div class="big sora">4.9<span style="font-size:22px;">⭐</span></div>
+            <div class="label">Rating Pengguna</div>
+          </div>
+          <div class="adv-stat">
+            <div class="big sora">5</div>
+            <div class="label">Menit Setup Pertama</div>
+          </div>
+          <div class="adv-stat">
+            <div class="big sora">0</div>
+            <div class="label">Biaya Berlangganan</div>
+          </div>
+        </div>
+
+        <!-- Testimonial mini -->
+        <div style="background:#fff;border-radius:16px;padding:24px;margin-top:20px;box-shadow:0 4px 20px rgba(0,0,0,.08);border-left:4px solid #059669;">
+          <div style="font-size:15px;color:#475569;font-style:italic;line-height:1.75;margin-bottom:16px;">
+            "Sebelumnya saya catat penjualan di buku tulis dan sering salah. Sekarang pakai UMKM Admin, semua langsung rapi dan saya bisa tahu berapa untung bulan ini!"
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#059669,#10b981);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:16px;">S</div>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:#0d1b2a;">Siti Rahayu</div>
+              <div style="font-size:12px;color:#94a3b8;">Pemilik Warung Sembako, Bandung</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREENSHOTS
+═══════════════════════════════════════════════════════════ -->
+<section id="screenshots" class="section" aria-label="Screenshot aplikasi">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-label">Lihat Aplikasinya</div>
+      <h2 class="section-title">Tampilan Nyata Aplikasi</h2>
+      <p class="section-sub">Screenshot langsung dari aplikasi — bukan mock design. Ini yang akan Anda gunakan setiap hari.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="screenshots-tabs">
+      <button class="tab-btn active" data-tab="tab-dashboard">📊 Dashboard</button>
+      <button class="tab-btn" data-tab="tab-produk">📦 Produk & Stok</button>
+      <button class="tab-btn" data-tab="tab-invoice">🧾 Invoice</button>
+      <button class="tab-btn" data-tab="tab-laporan">📈 Laporan</button>
+    </div>
+
+    <div class="screenshots-display reveal">
+
+      <div class="screenshot-panel active" id="tab-dashboard">
+        <div class="screen-frame">
+          <div class="screen-bar">
+            <div class="screen-dot"></div>
+            <div class="screen-dot"></div>
+            <div class="screen-dot"></div>
+          </div>
+          <img src="images/dashboard.png" alt="Dashboard UMKM Admin – Statistik bisnis real-time" loading="lazy" />
+        </div>
+        <div class="screen-caption">
+          <div class="cap-item"><span class="cap-dot"></span>Total produk &amp; stok</div>
+          <div class="cap-item"><span class="cap-dot"></span>Tagihan menunggu bayar</div>
+          <div class="cap-item"><span class="cap-dot"></span>Penjualan bulan ini</div>
+          <div class="cap-item"><span class="cap-dot"></span>Alert stok hampir habis</div>
+        </div>
+      </div>
+
+      <div class="screenshot-panel" id="tab-produk">
+        <div class="screen-frame">
+          <div class="screen-bar">
+            <div class="screen-dot"></div><div class="screen-dot"></div><div class="screen-dot"></div>
+          </div>
+          <img src="images/produk.png" alt="Halaman Produk & Stok – Kelola inventaris" loading="lazy" />
+        </div>
+        <div class="screen-caption">
+          <div class="cap-item"><span class="cap-dot"></span>Daftar produk lengkap</div>
+          <div class="cap-item"><span class="cap-dot"></span>Filter kategori</div>
+          <div class="cap-item"><span class="cap-dot"></span>Update stok cepat</div>
+          <div class="cap-item"><span class="cap-dot"></span>Badge stok rendah</div>
+        </div>
+      </div>
+
+      <div class="screenshot-panel" id="tab-invoice">
+        <div class="screen-frame">
+          <div class="screen-bar">
+            <div class="screen-dot"></div><div class="screen-dot"></div><div class="screen-dot"></div>
+          </div>
+          <img src="images/invoice.png" alt="Manajemen Invoice – Buat dan kelola tagihan" loading="lazy" />
+        </div>
+        <div class="screen-caption">
+          <div class="cap-item"><span class="cap-dot"></span>Pengingat jatuh tempo</div>
+          <div class="cap-item"><span class="cap-dot"></span>Filter status invoice</div>
+          <div class="cap-item"><span class="cap-dot"></span>Tandai lunas 1 klik</div>
+          <div class="cap-item"><span class="cap-dot"></span>Preview &amp; cetak</div>
+        </div>
+      </div>
+
+      <div class="screenshot-panel" id="tab-laporan">
+        <div class="screen-frame">
+          <div class="screen-bar">
+            <div class="screen-dot"></div><div class="screen-dot"></div><div class="screen-dot"></div>
+          </div>
+          <img src="images/laporan.png" alt="Laporan & Analisis – Grafik penjualan bulanan" loading="lazy" />
+        </div>
+        <div class="screen-caption">
+          <div class="cap-item"><span class="cap-dot"></span>Grafik penjualan bulanan</div>
+          <div class="cap-item"><span class="cap-dot"></span>Status pembayaran</div>
+          <div class="cap-item"><span class="cap-dot"></span>Produk terlaris</div>
+          <div class="cap-item"><span class="cap-dot"></span>Piutang belum bayar</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════════════════════ -->
+<section id="testimonials" class="section" aria-label="Testimoni pengguna">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-label">Kata Mereka</div>
+      <h2 class="section-title">Sudah Dipercaya Ratusan UMKM</h2>
+      <p class="section-sub">Pemilik usaha dari berbagai kota dan jenis bisnis sudah merasakan manfaatnya.</p>
+    </div>
+
+    <div class="testi-grid">
+
+      <div class="testi-card reveal delay-1">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">
+          "Toko sembako saya sekarang jauh lebih rapi dalam mencatat stok dan penjualan. Dulu sering bingung barang mana yang sudah habis, sekarang langsung tahu dari notifikasi sistem."
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar av-green">S</div>
+          <div>
+            <div class="testi-name">Siti Rahayu</div>
+            <div class="testi-biz">🏪 Warung Sembako — Bandung</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal delay-2">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">
+          "Fitur invoice-nya luar biasa! Sebelumnya saya buat invoice manual di Word, habis waktu berjam-jam. Sekarang tinggal pilih pelanggan dan produk, invoice langsung jadi dan bisa dicetak."
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar av-blue">B</div>
+          <div>
+            <div class="testi-name">Budi Santoso</div>
+            <div class="testi-biz">☕ Warung Kopi — Surabaya</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal delay-3">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">
+          "Yang saya suka, data tersimpan di Excel sendiri jadi saya tidak khawatir data saya digunakan pihak lain. Aman banget! Laporan penjualannya juga membantu saya buat keputusan bisnis."
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar av-orange">D</div>
+          <div>
+            <div class="testi-name">Dewi Kusuma</div>
+            <div class="testi-biz">👗 Toko Konveksi — Yogyakarta</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRICING
+═══════════════════════════════════════════════════════════ -->
+<section id="pricing" class="section" aria-label="Paket harga">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-label">Harga Terjangkau</div>
+      <h2 class="section-title" style="color:#fff;">Bayar Sekali,<br>Pakai Selamanya</h2>
+      <p class="section-sub">Tidak ada biaya bulanan. Tidak ada biaya tersembunyi. Pilih paket yang sesuai kebutuhan Anda.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Basic -->
+      <div class="pricing-card reveal delay-1">
+        <div class="pricing-plan">Paket Basic</div>
+        <div class="pricing-price sora"><sub>Rp</sub> 199<span style="font-size:24px;opacity:.6;">.000</span></div>
+        <div class="pricing-period">Bayar sekali · Lisensi seumur hidup</div>
+        <hr class="pricing-divider" />
+        <ul class="pricing-items">
+          <li class="pricing-item">Aplikasi UMKM Admin lengkap</li>
+          <li class="pricing-item">Database Excel template siap pakai</li>
+          <li class="pricing-item">Panduan penggunaan PDF (10 BAB)</li>
+          <li class="pricing-item">Kartu referensi cepat (cetak A4)</li>
+          <li class="pricing-item">Update minor gratis</li>
+          <li class="pricing-item">Akses fitur lengkap: stok, pelanggan, invoice, laporan</li>
+        </ul>
+        <a href="https://wa.me/6287779794633?text=Halo,%20saya%20ingin%20membeli%20Paket%20Basic%20UMKM%20Admin%20System%20Rp199.000" target="_blank" class="btn btn-outline pricing-btn">
+          <i class="fa-brands fa-whatsapp"></i> Beli Paket Basic
+        </a>
+      </div>
+
+      <!-- Premium -->
+      <div class="pricing-card featured reveal delay-2">
+        <div class="pricing-badge">⭐ Terpopuler</div>
+        <div class="pricing-plan">Paket Premium</div>
+        <div class="pricing-price sora"><sub>Rp</sub> 499<span style="font-size:24px;opacity:.75;">.000</span></div>
+        <div class="pricing-period">Bayar sekali · Lisensi seumur hidup</div>
+        <hr class="pricing-divider" />
+        <ul class="pricing-items">
+          <li class="pricing-item">Semua yang ada di Paket Basic</li>
+          <li class="pricing-item">Setup & instalasi via WhatsApp/Zoom</li>
+          <li class="pricing-item">Support teknis 30 hari via WhatsApp</li>
+          <li class="pricing-item">Kustomisasi nama toko &amp; logo</li>
+          <li class="pricing-item">Migrasi data dari sistem lama</li>
+          <li class="pricing-item">Update major gratis 1 tahun</li>
+        </ul>
+        <a href="https://wa.me/6287779794633?text=Halo,%20saya%20ingin%20membeli%20Paket%20Premium%20UMKM%20Admin%20System%20Rp499.000" target="_blank" class="btn pricing-btn btn-navy">
+          <i class="fa-brands fa-whatsapp"></i> Beli Paket Premium
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Guarantee -->
+    <div class="text-center reveal" style="margin-top:40px;">
+      <p style="color:rgba(255,255,255,.4);font-size:14px;">
+        <i class="fa-solid fa-shield-halved" style="color:#10b981;margin-right:6px;"></i>
+        Tidak puas? Hubungi kami dalam 7 hari dan kami akan bantu selesaikan masalah Anda.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════════════════ -->
+<section id="faq" class="section" aria-label="Pertanyaan yang sering diajukan">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+      <p class="section-sub">Belum yakin? Temukan jawaban pertanyaan Anda di sini.</p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Apakah aplikasi ini membutuhkan koneksi internet?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Tidak sama sekali! UMKM Admin System berjalan 100% offline di komputer Anda. Internet hanya dibutuhkan saat pertama kali setup untuk mengunduh font tampilan, itupun opsional. Data Anda tidak pernah dikirim ke server manapun.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Sistem operasi apa yang didukung? Apakah bisa di Windows?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Ya, aplikasi ini dioptimalkan untuk Windows 7, 8, 10, dan 11 (32-bit maupun 64-bit). Cukup install Python 3.x (gratis) dan klik dua kali file JALANKAN.bat — selesai! Tidak perlu instalasi software tambahan lain.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Apakah data bisnis saya aman?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Sangat aman. Semua data disimpan sepenuhnya di komputer Anda sendiri dalam format file Excel (.xlsx). Tidak ada cloud, tidak ada server pihak ketiga, dan tidak ada data yang keluar dari perangkat Anda. Anda pemilik penuh atas seluruh data bisnis Anda.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Bagaimana cara backup data agar tidak hilang?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Sangat mudah! Klik tombol "Export Excel" di dashboard — sistem akan mengunduh file database_umkm.xlsx berisi semua data Anda. Simpan file ini di folder Google Drive, flashdisk, atau email ke diri sendiri. Untuk restore, cukup klik "Import Excel" dan upload file tersebut.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Apakah bisa digunakan untuk banyak jenis usaha?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Tentu! UMKM Admin System dirancang fleksibel untuk semua jenis usaha: warung sembako, warung kopi, toko kelontong, bengkel, konveksi, toko online, kuliner, dan lainnya. Selama Anda punya produk, pelanggan, dan transaksi — aplikasi ini cocok untuk bisnis Anda.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Apakah ada biaya tambahan setelah membeli?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Tidak ada! Ini adalah pembelian sekali bayar tanpa biaya berlangganan bulanan atau tahunan. Paket Basic mendapat update minor gratis, sedangkan Paket Premium mendapat update major gratis selama 1 tahun penuh.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════════════════════ -->
+<section id="cta" class="section-sm" aria-label="Ajakan bertindak">
+  <div class="cta-inner container reveal">
+    <h2 class="sora">Mulai Kelola Bisnis Anda<br>Lebih Profesional Hari Ini</h2>
+    <p>Bergabung dengan 500+ UMKM yang sudah merasakan kemudahan administrasi bisnis bersama UMKM Admin System.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/6287779794633?text=Halo,%20saya%20tertarik%20dengan%20UMKM%20Admin%20System.%20Bisa%20bantu%20saya?" target="_blank" class="btn btn-navy btn-lg">
+        <i class="fa-brands fa-whatsapp"></i> Pesan Sekarang via WhatsApp
+      </a>
+      <a href="#pricing" class="btn btn-outline btn-lg">
+        Lihat Paket Harga
+      </a>
+    </div>
+    <p class="cta-note">
+      <i class="fa-solid fa-lock" style="margin-right:4px;"></i>
+      Data aman · Tidak ada berlangganan · Support via WhatsApp
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🏪</div>
+          <span>UMKM Admin</span>
+        </div>
+        <p>Aplikasi Administrasi Bisnis UMKM Indonesia yang simpel, offline, dan terjangkau. Kelola stok, pelanggan, invoice, dan laporan dalam satu sistem.</p>
+      </div>
+
+      <!-- Links -->
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <a href="#features">Fitur Aplikasi</a>
+        <a href="#screenshots">Screenshot</a>
+        <a href="#testimonials">Testimoni</a>
+        <a href="#pricing">Paket Harga</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Kontak</h4>
+        <p>
+          <i class="fa-brands fa-whatsapp" style="color:#25d366;margin-right:6px;"></i>
+          <a href="https://wa.me/6287779794633" target="_blank">+62 800-0000-0000</a>
+        </p>
+        <p>
+          <i class="fa-regular fa-envelope" style="color:#38bdf8;margin-right:6px;"></i>
+          <a href="mailto:info@umkmadmin.id">info@umkmadmin.id</a>
+        </p>
+        <p style="margin-top:16px;">
+          <a href="https://wa.me/6287779794633?text=Halo,%20saya%20ingin%20bertanya%20tentang%20UMKM%20Admin%20System" target="_blank" class="btn btn-wa btn-sm">
+            <i class="fa-brands fa-whatsapp"></i> Chat Sekarang
+          </a>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 UMKM Admin System. Hak cipta dilindungi.</span>
+      <span>Dibuat dengan ❤️ untuk UMKM Indonesia</span>
+    </div>
+  </div>
+</footer>
+
+<!-- JS -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
