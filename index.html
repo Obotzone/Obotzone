@@ -31,7 +31,7 @@ a{text-decoration:none;color:inherit}
 .grad{background:linear-gradient(135deg,#22d3ee 0%,#60a5fa 50%,#34d399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .lbl{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.22em;color:var(--c);text-transform:uppercase;display:block;margin-bottom:16px}
 .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,0.35),rgba(52,211,153,0.25),transparent)}
-.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.08em}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.08em;white-space:nowrap;flex-shrink:0}
 .tc{background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.2);color:var(--c)}
 .te{background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.2);color:var(--e)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;border:none;transition:transform .25s,background .25s,border-color .25s,box-shadow .25s}
@@ -100,14 +100,22 @@ a{text-decoration:none;color:inherit}
 .tr{display:flex;flex-wrap:wrap;gap:7px}
 /* Portfolio */
 .plist{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.06)}
-.prow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;border-bottom:1px solid rgba(255,255,255,0.055);transition:background .25s,padding-left .25s;cursor:pointer}
+.prow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.055);transition:background .25s,padding-left .25s;cursor:pointer}
 .prow:last-child{border-bottom:none}
 .prow:hover{background:rgba(255,255,255,0.03);padding-left:32px}
 .prow:hover .parr{opacity:1;transform:translate(0,0);color:var(--c)}
-.pid{font-family:'JetBrains Mono',monospace;font-size:.6rem;min-width:62px}
-.pname{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.1rem;color:white}
+.pid{font-family:'JetBrains Mono',monospace;font-size:.6rem;min-width:62px;flex-shrink:0}
+.pname{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1rem;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pmeta{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:nowrap;overflow:hidden}
 .parr{opacity:0;transform:translate(-4px,4px);transition:all .25s;flex-shrink:0}
-.tp{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.32);border:1px solid rgba(255,255,255,0.08);padding:2px 8px;border-radius:100px}
+.tp{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.32);border:1px solid rgba(255,255,255,0.08);padding:2px 8px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+@media(max-width:640px){
+  .prow{padding:16px 16px;gap:10px}
+  .prow:hover{padding-left:16px}
+  .pid{min-width:48px;font-size:.55rem}
+  .pname{font-size:.9rem}
+  .ptechs{display:none}
+}
 /* About */
 .agrid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -312,70 +320,70 @@ select.fi option{background:#18181f;color:white}
     <div class="plist reveal d1">
 
       <div class="prow">
-        <div style="display:flex;align-items:center;gap:20px;flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:16px;flex:1;min-width:0;overflow:hidden">
           <span class="pid" style="color:rgba(34,211,238,0.45)">PRJ-001</span>
-          <div>
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-              <span class="tag tc" style="font-size:.6rem;padding:2px 9px">Web Application</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.25)">2024</span>
-              <span class="tag tc" style="font-size:.58rem">&#9733; Featured</span>
+          <div style="min-width:0">
+            <div class="pmeta">
+              <span class="tag tc" style="font-size:.58rem;padding:2px 8px">Web App</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,0.25);flex-shrink:0">2024</span>
+              <span class="tag tc" style="font-size:.56rem;padding:2px 7px">&#9733; Featured</span>
             </div>
             <p class="pname">Platform Analytics SaaS</p>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
-          <div style="display:flex;gap:6px;flex-wrap:wrap" class="ptechs"><span class="tp">Next.js</span><span class="tp">Supabase</span><span class="tp">Recharts</span></div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <div style="display:flex;gap:6px" class="ptechs"><span class="tp">Next.js</span><span class="tp">Supabase</span></div>
           <div class="parr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
         </div>
       </div>
 
       <div class="prow">
-        <div style="display:flex;align-items:center;gap:20px;flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:16px;flex:1;min-width:0;overflow:hidden">
           <span class="pid" style="color:rgba(52,211,153,0.45)">PRJ-002</span>
-          <div>
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-              <span class="tag te" style="font-size:.6rem;padding:2px 9px">E-Commerce</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.25)">2024</span>
+          <div style="min-width:0">
+            <div class="pmeta">
+              <span class="tag te" style="font-size:.58rem;padding:2px 8px">E-Commerce</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,0.25);flex-shrink:0">2024</span>
             </div>
             <p class="pname">Luxury Retail Platform</p>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
-          <div style="display:flex;gap:6px;flex-wrap:wrap" class="ptechs"><span class="tp">Astro</span><span class="tp">Stripe</span><span class="tp">Cloudflare</span></div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <div style="display:flex;gap:6px" class="ptechs"><span class="tp">Astro</span><span class="tp">Stripe</span></div>
           <div class="parr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
         </div>
       </div>
 
       <div class="prow">
-        <div style="display:flex;align-items:center;gap:20px;flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:16px;flex:1;min-width:0;overflow:hidden">
           <span class="pid" style="color:rgba(34,211,238,0.45)">PRJ-003</span>
-          <div>
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-              <span class="tag tc" style="font-size:.6rem;padding:2px 9px">Brand Design</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.25)">2023</span>
+          <div style="min-width:0">
+            <div class="pmeta">
+              <span class="tag tc" style="font-size:.58rem;padding:2px 8px">Brand Design</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,0.25);flex-shrink:0">2023</span>
             </div>
             <p class="pname">Visual Identity System</p>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
-          <div style="display:flex;gap:6px;flex-wrap:wrap" class="ptechs"><span class="tp">Figma</span><span class="tp">Motion</span><span class="tp">Brand Guide</span></div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <div style="display:flex;gap:6px" class="ptechs"><span class="tp">Figma</span><span class="tp">Motion</span></div>
           <div class="parr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
         </div>
       </div>
 
       <div class="prow">
-        <div style="display:flex;align-items:center;gap:20px;flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:16px;flex:1;min-width:0;overflow:hidden">
           <span class="pid" style="color:rgba(52,211,153,0.45)">PRJ-004</span>
-          <div>
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-              <span class="tag te" style="font-size:.6rem;padding:2px 9px">Web Development</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.25)">2023</span>
+          <div style="min-width:0">
+            <div class="pmeta">
+              <span class="tag te" style="font-size:.58rem;padding:2px 8px">Web Dev</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,0.25);flex-shrink:0">2023</span>
             </div>
             <p class="pname">Corporate Website Rebuild</p>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
-          <div style="display:flex;gap:6px;flex-wrap:wrap" class="ptechs"><span class="tp">Astro</span><span class="tp">TailwindCSS</span><span class="tp">Cloudflare Pages</span></div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <div style="display:flex;gap:6px" class="ptechs"><span class="tp">Astro</span><span class="tp">Tailwind</span></div>
           <div class="parr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
         </div>
       </div>
