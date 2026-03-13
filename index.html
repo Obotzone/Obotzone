@@ -1,121 +1,548 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Obotzone — Technology • Projects • Notes</title>
-  <meta name="description" content="Tech enthusiast focusing on practical projects, clear documentation, and continuous learning." />
-  <link rel="canonical" href="https://obotzone.id/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Obotzone — Technology • Projects • Notes" />
-  <meta property="og:description" content="Clean, simple portfolio showcasing tech work and learning notes." />
-  <meta property="og:url" content="https://obotzone.id/" />
-  <meta property="og:image" content="https://i.postimg.cc/s2jJhHf7/obotzone.png" />
-
-  <link rel="icon" href="https://i.postimg.cc/s2jJhHf7/obotzone.png" />
-  <link rel="stylesheet" href="/style.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Obotzone — Digital Craft &amp; Tech Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#09090b;color:rgba(255,255,255,0.82);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#09090b}
+::-webkit-scrollbar-thumb{background:rgba(34,211,238,0.35);border-radius:4px}
+:root{--c:#22d3ee;--e:#34d399;--bg:#09090b;--bdr:rgba(255,255,255,0.07);--muted:rgba(255,255,255,0.42)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.sec{padding:100px 24px}
+.sec-border{border-top:1px solid var(--bdr)}
+.mesh{background:radial-gradient(ellipse 900px 700px at 5% 10%,rgba(34,211,238,0.055) 0%,transparent 65%),radial-gradient(ellipse 700px 600px at 95% 80%,rgba(52,211,153,0.04) 0%,transparent 65%),#09090b}
+.dots{background-image:radial-gradient(rgba(255,255,255,0.055) 1px,transparent 1px);background-size:28px 28px}
+.glass-card{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:16px;transition:background .3s,border-color .3s,transform .3s}
+.glass-card:hover{background:rgba(255,255,255,0.06);border-color:rgba(34,211,238,0.22);transform:translateY(-4px)}
+.grad{background:linear-gradient(135deg,#22d3ee 0%,#60a5fa 50%,#34d399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lbl{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.22em;color:var(--c);text-transform:uppercase;display:block;margin-bottom:16px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,0.35),rgba(52,211,153,0.25),transparent)}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.08em}
+.tc{background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.2);color:var(--c)}
+.te{background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.2);color:var(--e)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;border:none;transition:transform .25s,background .25s,border-color .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px)}
+.bp{background:linear-gradient(135deg,rgba(34,211,238,0.15),rgba(52,211,153,0.08));border:1px solid rgba(34,211,238,0.4);color:var(--c)}
+.bp:hover{background:linear-gradient(135deg,rgba(34,211,238,0.25),rgba(52,211,153,0.15));border-color:rgba(34,211,238,0.7);box-shadow:0 0 30px rgba(34,211,238,0.2)}
+.bg{background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6)}
+.bg:hover{border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.9)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+/* Navbar */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(9,9,11,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06);transition:box-shadow .3s}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:white}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nl{padding:8px 16px;border-radius:8px;font-size:.875rem;font-weight:500;color:rgba(255,255,255,0.5);transition:color .2s,background .2s}
+.nl:hover{color:white;background:rgba(255,255,255,0.06)}
+.mbtn{display:none;padding:8px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);cursor:pointer}
+.mnav{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1);background:rgba(9,9,11,0.95);border-bottom:1px solid rgba(255,255,255,0.06)}
+.mnav.open{max-height:320px}
+.mnav a{display:block;padding:14px 24px;font-size:.9rem;color:rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.04);transition:color .15s,background .15s}
+.mnav a:hover{color:white;background:rgba(255,255,255,0.04)}
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.hero-in{max-width:1100px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:48px}
+.hero-h{font-family:'Syne',sans-serif;font-weight:800;line-height:1.0;letter-spacing:-.03em;margin-bottom:24px;font-size:clamp(2.8rem,7.5vw,6.5rem)}
+.hero-p{font-size:clamp(.95rem,1.8vw,1.1rem);color:var(--muted);font-weight:300;line-height:1.8;max-width:520px;margin-bottom:40px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,0.055);border-radius:14px;overflow:hidden;gap:1px;max-width:560px}
+.stat{background:rgba(255,255,255,0.025);padding:20px 12px;text-align:center}
+.sv{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:4px;background:linear-gradient(135deg,#22d3ee,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sl{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,0.32);letter-spacing:.12em;text-transform:uppercase}
+.fc{width:230px;flex-shrink:0;animation:floatY 7s ease-in-out infinite}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.scan{position:relative;height:2px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;margin-bottom:16px}
+.scan::after{content:'';position:absolute;top:0;left:0;width:33%;height:100%;background:linear-gradient(90deg,transparent,#22d3ee,transparent);animation:scanA 2.8s ease-in-out infinite}
+@keyframes scanA{0%,100%{transform:translateX(-200%)}50%{transform:translateX(500%)}}
+.mr{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.ml{font-family:'JetBrains Mono',monospace;font-size:.63rem;color:rgba(255,255,255,0.38)}
+.mv{font-family:'JetBrains Mono',monospace;font-size:.73rem;font-weight:500}
+/* Bento */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.bw{grid-column:span 2}
+/* Service cards */
+.si{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0}
+.sh{font-family:'Syne',sans-serif;font-weight:600;color:white;margin-bottom:8px}
+.sp{color:var(--muted);font-size:.875rem;font-weight:300;line-height:1.75;margin-bottom:16px}
+.tr{display:flex;flex-wrap:wrap;gap:7px}
+/* Portfolio */
+.plist{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.06)}
+.prow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;border-bottom:1px solid rgba(255,255,255,0.055);transition:background .25s,padding-left .25s;cursor:pointer}
+.prow:last-child{border-bottom:none}
+.prow:hover{background:rgba(255,255,255,0.03);padding-left:32px}
+.prow:hover .parr{opacity:1;transform:translate(0,0);color:var(--c)}
+.pid{font-family:'JetBrains Mono',monospace;font-size:.6rem;min-width:62px}
+.pname{font-family:'Syne',sans-serif;font-weight:600;font-size:1.1rem;color:white}
+.parr{opacity:0;transform:translate(-4px,4px);transition:all .25s;flex-shrink:0}
+.tp{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.32);border:1px solid rgba(255,255,255,0.08);padding:2px 8px;border-radius:100px}
+/* About */
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* Stack */
+.sgrid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+.spill{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 8px;border-radius:12px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.03);transition:border-color .25s,background .25s,transform .25s}
+.spill:hover{border-color:rgba(34,211,238,0.2);background:rgba(34,211,238,0.05);transform:translateY(-3px)}
+.sn{font-family:'JetBrains Mono',monospace;font-size:.59rem;color:rgba(255,255,255,0.35)}
+/* Form */
+.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;color:rgba(34,211,238,0.6);text-transform:uppercase;margin-bottom:8px}
+.fi{width:100%;padding:13px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;color:rgba(255,255,255,0.85);font-family:'Plus Jakarta Sans',sans-serif;font-size:.875rem;outline:none;transition:border-color .2s,background .2s,box-shadow .2s}
+.fi:focus{border-color:rgba(34,211,238,0.4);background:rgba(34,211,238,0.04);box-shadow:0 0 0 3px rgba(34,211,238,0.07)}
+.fi::placeholder{color:rgba(255,255,255,0.2)}
+select.fi{cursor:pointer}
+select.fi option{background:#18181f;color:white}
+/* Footer */
+.flink{font-size:.875rem;font-weight:300;color:rgba(255,255,255,0.38);transition:color .15s}
+.flink:hover{color:rgba(255,255,255,0.85)}
+.sbtn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.35);transition:border-color .2s,color .2s}
+.sbtn:hover{border-color:rgba(34,211,238,0.35);color:var(--c)}
+/* Animations */
+@keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.pd{animation:pd 2s ease-in-out infinite}
+/* Responsive */
+@media(max-width:1024px){.fc{display:none!important}}
+@media(max-width:900px){.bento{grid-template-columns:1fr}.bw{grid-column:span 1}}
+@media(max-width:768px){
+  .nav-links{display:none}.mbtn{display:flex}
+  .agrid{grid-template-columns:1fr;gap:40px}
+  .sgrid{grid-template-columns:repeat(4,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr);max-width:100%}
+  .sec{padding:72px 20px}
+}
+@media(max-width:560px){
+  .vgrid{grid-template-columns:1fr}
+  .f2col{grid-template-columns:1fr!important}
+  .fgrid{grid-template-columns:1fr 1fr!important}
+  .fbrand{grid-column:span 2!important}
+  .ptechs{display:none}
+}
+</style>
 </head>
 <body>
-  <!-- Top navigation with dropdown -->
-  <header class="site-header">
-  <h1>Obotzone</h1>
-    <div class="container nav">
-      <a class="brand" href="/">Obotzone</a>
-      <nav aria-label="Primary">
-        <ul class="menu">
-          <li><a href="/">Home</a></li>
-          <li class="has-dropdown">
-            <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Work</button>
-            <ul class="dropdown" aria-label="submenu">
-              <li><a href="/portofolio/">Portfolio Overview</a></li>
-              <li><a href="/portofolio/vpn-adguard.html">VPN + AdGuard</a></li>
-              <li><a href="/portofolio/bot-cs-telegram.html">Telegram CS Bot</a></li>
-            </ul>
-          </li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+
+<!-- NAVBAR -->
+<header class="nav" id="navbar">
+  <div class="nav-in">
+    <a href="/" class="logo">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+        <path d="M16 2L28 9L28 23L16 30L4 23L4 9Z" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.1)"/>
+        <path d="M16 8L22 11.5L22 18.5L16 22L10 18.5L10 11.5Z" fill="#22d3ee" opacity="0.7"/>
+      </svg>
+      Obot<span class="grad">zone</span>
+    </a>
+    <nav class="nav-links">
+      <a class="nl" href="#layanan">Layanan</a>
+      <a class="nl" href="#portfolio">Portfolio</a>
+      <a class="nl" href="#tentang">Tentang</a>
+      <a class="nl" href="#blog">Blog</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="#kontak" class="btn bp" style="padding:9px 20px;font-size:.8rem">Mulai Proyek <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <button class="mbtn" id="menuBtn" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg>
+      </button>
     </div>
-  </header>
-  
-  <!-- Hero: concise and professional -->
-  <section class="hero-min">
-    <div class="container">
-      <img src="obotzone.png" alt="Obotzone Logo" class="hero-logo">
-      <h1>Clear tech. Practical results.</h1>
-      <p>I design simple solutions around websites, automation, and private infrastructure.</p>
+  </div>
+  <div class="mnav" id="mobileNav">
+    <a href="#layanan">Layanan</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#blog">Blog</a>
+    <a href="#kontak" style="color:var(--c)">Mulai Proyek →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero mesh dots">
+  <div style="position:absolute;top:-100px;left:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,0.07),transparent 65%);pointer-events:none"></div>
+  <div style="position:absolute;bottom:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(52,211,153,0.05),transparent 65%);pointer-events:none"></div>
+  <div class="hero-in">
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px" class="reveal">
+        <span class="tag te"><span class="pd" style="width:7px;height:7px;border-radius:50%;background:var(--e);display:inline-block"></span>// SYSTEM ONLINE</span>
+        <span class="tag tc">v2.0 — 2025</span>
+      </div>
+      <h1 class="hero-h reveal d1">
+        <span style="display:block;color:white">Kami Membangun</span>
+        <span class="grad" style="display:block">Produk Digital</span>
+        <span style="display:block;color:rgba(255,255,255,0.5);font-weight:600;font-size:clamp(1.7rem,4.5vw,3.8rem)">Yang Benar&#8209;Benar Bekerja.</span>
+      </h1>
+      <p class="hero-p reveal d2">Obotzone adalah studio teknologi yang merancang dan mengembangkan website, web app, dan sistem digital dengan performa tinggi — dari konsep hingga produksi.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:60px" class="reveal d3">
+        <a href="#portfolio" class="btn bp" style="font-size:.95rem;padding:14px 32px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Lihat Portfolio
+        </a>
+        <a href="#kontak" class="btn bg" style="font-size:.95rem;padding:14px 32px">Diskusi Proyek <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="stats reveal d4">
+        <div class="stat"><div class="sv">50+</div><div class="sl">Proyek Selesai</div></div>
+        <div class="stat"><div class="sv">30+</div><div class="sl">Klien Aktif</div></div>
+        <div class="stat"><div class="sv">5 thn</div><div class="sl">Pengalaman</div></div>
+        <div class="stat"><div class="sv">99.9%</div><div class="sl">Uptime SLA</div></div>
+      </div>
     </div>
-  </section>
+    <div class="fc glass-card" style="padding:24px">
+      <div class="scan"></div>
+      <span class="lbl" style="font-size:.6rem;margin-bottom:14px">// PERFORMANCE_METRICS</span>
+      <div class="mr"><span class="ml">Lighthouse Score</span><span class="mv" style="color:var(--e)">99</span></div>
+      <div class="mr"><span class="ml">Page Load</span><span class="mv" style="color:var(--c)">0.8s</span></div>
+      <div class="mr"><span class="ml">Core Web Vitals</span><span class="mv" style="color:var(--e)">PASS</span></div>
+      <div class="mr" style="border-bottom:none"><span class="ml">Build Time</span><span class="mv" style="color:var(--c)">1.2s</span></div>
+    </div>
+  </div>
+  <div class="divider" style="position:absolute;bottom:0;left:0;right:0"></div>
+</section>
 
-  <main class="container">
-    <!-- At-a-glance / badges -->
-    <section class="quick-facts">
-      <ul class="badges">
-        <li>WordPress</li>
-        <li>Cloudflare Pages</li>
-        <li>VPS & HestiaCP</li>
-        <li>WireGuard</li>
-        <li>n8n · ChatGPT</li>
-        <li>Basic Device Repair</li>
-      </ul>
-    </section>
-
-    <!-- Services (informative, short) -->
-    <section id="services">
-      <h2>Services</h2>
-      <div class="grid-3">
-        <article class="card-min">
-          <h3>Website & Landing</h3>
-          <p>Fast, minimal pages for clear messaging and conversion page one. Example: <a href="https://hifibandung.com" target="_blank" rel="noopener">hifibandung.com</a>.</p>
-        </article>
-        <article class="card-min">
-          <h3>Automation & Bots</h3>
-          <p>n8n + ChatGPT flows for customer support and routine tasks on Telegram.</p>
-        </article>
-        <article class="card-min">
-          <h3>Private Networking</h3>
-          <p>Self-hosted VPN (WireGuard) with AdGuard DNS to reduce ads and tracking.</p>
-        </article>
-        <article class="card-min">
-          <h3>VPS Hosting</h3>
-          <p>HestiaCP setup: domain, SSL, email, and deployments with basic hardening.</p>
-        </article>
-        <article class="card-min">
-          <h3>Light PC/Phone Fix</h3>
-          <p>Basic diagnostics, OS install (Windows/Linux/Office), screen/port button fixes.</p>
-        </article>
-        <article class="card-min">
-          <h3>Docs & Slides</h3>
-          <p>Concise documentation and clean PowerPoint for non-fluffy communication.</p>
-        </article>
+<!-- LAYANAN -->
+<section class="sec" id="layanan">
+  <div class="wrap">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:56px" class="reveal">
+      <div>
+        <span class="lbl">// 02 — LAYANAN</span>
+        <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.9rem,4.5vw,3.2rem);line-height:1.1;color:white">Apa yang <span class="grad">Kami Kerjakan</span></h2>
       </div>
-    </section>
+      <p style="color:var(--muted);font-size:.9rem;font-weight:300;line-height:1.7;max-width:300px">End-to-end digital solutions — dari desain hingga deployment dan maintenance.</p>
+    </div>
+    <div class="bento reveal d1">
 
-    <!-- Selected work -->
-    <section>
-      <h2>Selected Work</h2>
-      <ul class="list-links">
-        <li><a href="/portofolio/">Portfolio overview</a> — brief summaries and links.</li>
-        <li><a href="/portofolio/vpn-adguard.html">VPN + AdGuard</a> — private network with network-level filtering.</li>
-        <li><a href="/portofolio/bot-cs-telegram.html">Telegram CS Bot</a> — automated first-response flows.</li>
-      </ul>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="contact-box">
-        <p>Email: <a href="mailto:obotzone.contact@gmail.com">obotzone.contact@gmail.com</a></p>
-        <p>WhatsApp: <a href="https://wa.me/6287779794633" rel="noopener">+62 877 7979 4633</a></p>
+      <div class="glass-card bw" style="padding:32px">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+          <div class="si" style="background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.2);color:var(--c)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(34,211,238,0.4)">01</span>
+        </div>
+        <h3 class="sh" style="font-size:1.35rem">Web Development</h3>
+        <p class="sp">Website dan web app modern dibangun dengan Astro, Next.js, atau framework terbaik sesuai kebutuhan. Performa tinggi, SEO ready, dan deploy otomatis ke edge.</p>
+        <div class="tr"><span class="tag tc">Astro</span><span class="tag tc">Next.js</span><span class="tag tc">TypeScript</span></div>
       </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container"><p>© 2025 Obotzone</p></div>
-  </footer>
+      <div class="glass-card" style="padding:28px">
+        <div class="si" style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.2);color:var(--e)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(52,211,153,0.4);display:block;margin-bottom:10px">02</span>
+        <h3 class="sh">UI/UX Design</h3>
+        <p class="sp">Desain antarmuka yang intuitif, elegan, dan berorientasi konversi. Dari wireframe ke prototype interaktif.</p>
+        <div class="tr"><span class="tag te">Figma</span><span class="tag te">Prototyping</span></div>
+      </div>
+
+      <div class="glass-card" style="padding:28px">
+        <div class="si" style="background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.2);color:var(--c)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(34,211,238,0.4);display:block;margin-bottom:10px">03</span>
+        <h3 class="sh">Cloud &amp; DevOps</h3>
+        <p class="sp">Setup CI/CD, Cloudflare Pages/Workers, Docker, dan monitoring. Infrastruktur yang scalable tanpa downtime.</p>
+        <div class="tr"><span class="tag tc">Cloudflare</span><span class="tag tc">Docker</span><span class="tag tc">GitHub Actions</span></div>
+      </div>
+
+      <div class="glass-card" style="padding:28px">
+        <div class="si" style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.2);color:var(--e)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(52,211,153,0.4);display:block;margin-bottom:10px">04</span>
+        <h3 class="sh">Brand &amp; Identity</h3>
+        <p class="sp">Identitas merek digital yang kuat: logo, sistem warna, tipografi, dan panduan brand untuk konsistensi di semua kanal.</p>
+        <div class="tr"><span class="tag te">Branding</span><span class="tag te">Logo Design</span></div>
+      </div>
+
+      <div class="glass-card bw" style="padding:32px">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+          <div class="si" style="background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.2);color:var(--c)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(34,211,238,0.4)">05</span>
+        </div>
+        <h3 class="sh" style="font-size:1.35rem">E-Commerce &amp; SaaS</h3>
+        <p class="sp">Platform e-commerce custom dan aplikasi SaaS dengan payment gateway, dashboard analitik, dan manajemen konten yang powerful.</p>
+        <div class="tr"><span class="tag tc">Stripe</span><span class="tag tc">Supabase</span><span class="tag tc">CMS</span></div>
+      </div>
+
+      <div class="glass-card" style="padding:28px;background:linear-gradient(135deg,rgba(34,211,238,0.06),rgba(52,211,153,0.03));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:200px">
+        <span class="lbl" style="font-size:.6rem;margin-bottom:12px">// CUSTOM PROJECT</span>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;font-size:1.1rem;color:white;margin-bottom:8px">Ada Kebutuhan Khusus?</h3>
+        <p style="color:var(--muted);font-size:.85rem;font-weight:300;margin-bottom:20px">Kami terbuka untuk semua jenis proyek digital.</p>
+        <a href="#kontak" class="btn bp" style="font-size:.8rem;padding:10px 22px">Diskusi Sekarang</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="sec sec-border" id="portfolio">
+  <div class="wrap">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:56px" class="reveal">
+      <div>
+        <span class="lbl">// 03 — PORTFOLIO</span>
+        <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.9rem,4.5vw,3.2rem);line-height:1.1;color:white">Karya yang <span class="grad">Berbicara Sendiri</span></h2>
+      </div>
+      <a href="#kontak" class="btn bg" style="font-size:.85rem;padding:10px 22px;align-self:flex-end">Semua Proyek <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="plist reveal d1">
+
+      <div class="prow">
+        <div style="display:flex;align-items:center;gap:20px;flex:1;min-width:0">
+          <span class="pid" style="color:rgba(34,211,238,0.45)">PRJ-001</span>
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
+              <span class="tag tc" style="font-size:.6rem;padding:2px 9px">Web Application</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.25)">2024</span>
+              <span class="tag tc" style="font-size:.58rem">&#9733; Featured</span>
+            </div>
+            <p class="pname">Platform Analytics SaaS</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+          <div style="display:flex;gap:6px;flex-wrap:wrap" class="ptechs"><span class="tp">Next.js</span><span class="tp">Supabase</span><span class="tp">Recharts</span></div>
+          <div class="parr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </div>
+
+      <div class="prow">
+        <div style="display:flex;align-items:center;gap:20px;flex:1;min-width:0">
+          <span class="pid" style="color:rgba(52,211,153,0.45)">PRJ-002</span>
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
+              <span class="tag te" style="font-size:.6rem;padding:2px 9px">E-Commerce</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.25)">2024</span>
+            </div>
+            <p class="pname">Luxury Retail Platform</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+          <div style="display:flex;gap:6px;flex-wrap:wrap" class="ptechs"><span class="tp">Astro</span><span class="tp">Stripe</span><span class="tp">Cloudflare</span></div>
+          <div class="parr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </div>
+
+      <div class="prow">
+        <div style="display:flex;align-items:center;gap:20px;flex:1;min-width:0">
+          <span class="pid" style="color:rgba(34,211,238,0.45)">PRJ-003</span>
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
+              <span class="tag tc" style="font-size:.6rem;padding:2px 9px">Brand Design</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.25)">2023</span>
+            </div>
+            <p class="pname">Visual Identity System</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+          <div style="display:flex;gap:6px;flex-wrap:wrap" class="ptechs"><span class="tp">Figma</span><span class="tp">Motion</span><span class="tp">Brand Guide</span></div>
+          <div class="parr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </div>
+
+      <div class="prow">
+        <div style="display:flex;align-items:center;gap:20px;flex:1;min-width:0">
+          <span class="pid" style="color:rgba(52,211,153,0.45)">PRJ-004</span>
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
+              <span class="tag te" style="font-size:.6rem;padding:2px 9px">Web Development</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.25)">2023</span>
+            </div>
+            <p class="pname">Corporate Website Rebuild</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+          <div style="display:flex;gap:6px;flex-wrap:wrap" class="ptechs"><span class="tp">Astro</span><span class="tp">TailwindCSS</span><span class="tp">Cloudflare Pages</span></div>
+          <div class="parr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="glass-card reveal d2" style="margin-top:16px;padding:28px 32px;display:flex;flex-wrap:wrap;align-items:center;gap:20px;background:linear-gradient(135deg,rgba(34,211,238,0.04),rgba(52,211,153,0.02))">
+      <div style="display:flex">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(34,211,238,0.15);border:2px solid #09090b;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--c);margin-right:-10px">&#9733;</div>
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(52,211,153,0.15);border:2px solid #09090b;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--e);margin-right:-10px">&#9733;</div>
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(96,165,250,0.15);border:2px solid #09090b;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#60a5fa">&#9733;</div>
+      </div>
+      <div style="flex:1;min-width:260px">
+        <p style="color:rgba(255,255,255,0.58);font-size:.9rem;font-weight:300;font-style:italic;line-height:1.7;margin-bottom:6px">"Obotzone benar-benar mengubah cara kami tampil di digital. Website baru kami load dalam 0.6 detik dan konversi naik 40% dalam sebulan pertama."</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:rgba(255,255,255,0.28)">&#8212; Klien, Platform E-Commerce &middot; 2024</p>
+      </div>
+      <div style="color:#facc15;font-size:.95rem;letter-spacing:3px;flex-shrink:0">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    </div>
+  </div>
+</section>
+
+<!-- TENTANG -->
+<section class="sec sec-border mesh" id="tentang" style="position:relative;overflow:hidden">
+  <div style="position:absolute;top:0;right:0;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(52,211,153,0.045),transparent 65%);pointer-events:none"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="agrid">
+      <div class="reveal">
+        <span class="lbl">// 04 — TENTANG KAMI</span>
+        <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;margin-bottom:24px;color:white">Studio di balik <span class="grad">obotzone.id</span></h2>
+        <p style="color:var(--muted);font-weight:300;line-height:1.8;font-size:.95rem;margin-bottom:16px">Kami adalah tim kecil yang bersemangat tentang teknologi web modern. Berdiri sejak 2019, Obotzone telah membantu puluhan bisnis dan startup Indonesia tampil profesional di dunia digital.</p>
+        <p style="color:var(--muted);font-weight:300;line-height:1.8;font-size:.95rem;margin-bottom:32px">Filosofi kami sederhana: website yang bagus bukan cuma soal tampilan &#8212; ia harus cepat, mudah dikelola, dan menghasilkan hasil nyata bagi bisnis kamu.</p>
+        <a href="#kontak" class="btn bp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Ngobrol Bareng Kami</a>
+      </div>
+      <div class="vgrid reveal d2">
+        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#9889;</div><h4 style="font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Performance First</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Setiap proyek ditargetkan Lighthouse 95+</p></div>
+        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#128241;</div><h4 style="font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Mobile Native</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Dirancang untuk semua ukuran layar</p></div>
+        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#127758;</div><h4 style="font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Edge Deployed</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Cloudflare CDN di 300+ kota dunia</p></div>
+        <div class="glass-card" style="padding:22px"><div style="font-size:1.4rem;margin-bottom:12px">&#11042;</div><h4 style="font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px">Open Source</h4><p style="color:rgba(255,255,255,0.38);font-size:.8rem;font-weight:300;line-height:1.6">Kode bersih, terdokumentasi, maintainable</p></div>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:72px">
+      <p class="lbl" style="text-align:center;margin-bottom:28px">// TECH STACK YANG KAMI GUNAKAN</p>
+      <div class="sgrid">
+        <div class="spill"><span style="font-size:1.15rem;color:#FF5D01">&#9889;</span><span class="sn">Astro</span></div>
+        <div class="spill"><span style="font-size:1.15rem;color:white">&#9650;</span><span class="sn">Next.js</span></div>
+        <div class="spill"><span style="font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:#3178C6">TS</span><span class="sn">TypeScript</span></div>
+        <div class="spill"><span style="font-size:1.15rem;color:#38BDF8">&#9672;</span><span class="sn">Tailwind</span></div>
+        <div class="spill"><span style="font-size:1.15rem;color:#F48120">&#9729;</span><span class="sn">Cloudflare</span></div>
+        <div class="spill"><span style="font-size:1.15rem;color:#A259FF">&#9685;</span><span class="sn">Figma</span></div>
+        <div class="spill"><span style="font-size:1.15rem;color:#3ECF8E">&#11042;</span><span class="sn">Supabase</span></div>
+        <div class="spill"><span style="font-size:1.15rem;color:white">&#9651;</span><span class="sn">Vercel</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section class="sec sec-border" id="kontak" style="position:relative;overflow:hidden">
+  <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:700px;height:300px;border-radius:50%;background:radial-gradient(ellipse,rgba(34,211,238,0.06),transparent 65%);pointer-events:none"></div>
+  <div class="wrap" style="position:relative;z-index:2;max-width:680px">
+    <div class="reveal" style="text-align:center;margin-bottom:56px">
+      <span class="lbl" style="text-align:center">// 06 — KONTAK</span>
+      <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);line-height:1.1;margin-bottom:16px;color:white">Siap Mulai <span class="grad">Proyek Bersama?</span></h2>
+      <p style="color:var(--muted);font-weight:300;line-height:1.7">Ceritakan kebutuhan digital kamu. Kami akan respons dalam 24 jam.</p>
+    </div>
+    <div class="glass-card reveal d1" style="padding:36px 40px">
+      <div class="scan" style="margin-bottom:28px"></div>
+      <form id="cForm">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px" class="f2col">
+          <div><label class="fl">Nama</label><input type="text" name="name" placeholder="Nama lengkap kamu" class="fi" required/></div>
+          <div><label class="fl">Email</label><input type="email" name="email" placeholder="email@domain.com" class="fi" required/></div>
+        </div>
+        <div style="margin-bottom:16px"><label class="fl">Jenis Kebutuhan</label>
+          <select name="service" class="fi">
+            <option value="">Pilih layanan...</option>
+            <option>Web Development</option><option>UI/UX Design</option><option>E-Commerce</option>
+            <option>Brand Identity</option><option>Cloud &amp; DevOps</option><option>Lainnya</option>
+          </select>
+        </div>
+        <div style="margin-bottom:16px"><label class="fl">Budget Range</label>
+          <select name="budget" class="fi">
+            <option value="">Estimasi budget...</option>
+            <option>Rp 3 &#8211; 5 juta</option><option>Rp 5 &#8211; 10 juta</option>
+            <option>Rp 10 &#8211; 20 juta</option><option>Di atas Rp 20 juta</option>
+          </select>
+        </div>
+        <div style="margin-bottom:24px"><label class="fl">Ceritakan Proyekmu</label><textarea name="message" rows="5" placeholder="Deskripsikan kebutuhan, tujuan, dan timeline yang kamu inginkan..." class="fi" style="resize:none" required></textarea></div>
+        <button type="submit" class="btn bp" id="sbtn" style="width:100%;justify-content:center;font-size:.95rem;padding:15px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <span id="sbtnlbl">Kirim Pesan</span>
+        </button>
+      </form>
+      <div id="success" style="display:none;text-align:center;padding:32px 0">
+        <div style="width:52px;height:52px;border-radius:14px;background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.28);display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:600;color:white;font-size:1.2rem;margin-bottom:8px">Pesan Terkirim!</h3>
+        <p style="color:var(--muted);font-size:.875rem;font-weight:300">Kami akan menghubungi kamu dalam 24 jam.</p>
+      </div>
+    </div>
+    <div class="reveal d2" style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:28px;align-items:center">
+      <a href="mailto:hello@obotzone.id" style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.38);font-size:.85rem;transition:color .2s" onmouseover="this.style.color='#22d3ee'" onmouseout="this.style.color='rgba(255,255,255,0.38)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@obotzone.id</a>
+      <span style="color:rgba(255,255,255,0.1)">|</span>
+      <a href="https://wa.me/6281234567890" style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.38);font-size:.85rem;transition:color .2s" onmouseover="this.style.color='#34d399'" onmouseout="this.style.color='rgba(255,255,255,0.38)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 0118 1.18a2 2 0 012 2v3"/></svg>WhatsApp</a>
+      <span style="color:rgba(255,255,255,0.1)">|</span>
+      <a href="https://instagram.com/obotzone" style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.38);font-size:.85rem;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.38)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@obotzone</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid var(--bdr);padding:56px 24px 32px">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px" class="fgrid">
+      <div class="fbrand">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9L28 23L16 30L4 23L4 9Z" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.1)"/><path d="M16 8L22 11.5L22 18.5L16 22L10 18.5L10 11.5Z" fill="#22d3ee" opacity="0.7"/></svg>
+          <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:white">Obot<span class="grad">zone</span></span>
+        </div>
+        <p style="color:rgba(255,255,255,0.32);font-size:.85rem;font-weight:300;line-height:1.7;max-width:260px;margin-bottom:20px">Studio teknologi digital yang membangun produk web modern, cepat, dan elegan untuk bisnis Indonesia.</p>
+        <div style="display:flex;gap:10px">
+          <a href="https://github.com/Obotzone" class="sbtn" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
+          <a href="https://instagram.com/obotzone" class="sbtn" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5 style="font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;color:rgba(255,255,255,0.28);text-transform:uppercase;margin-bottom:16px">Layanan</h5>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#layanan" class="flink">Web Development</a>
+          <a href="#layanan" class="flink">UI/UX Design</a>
+          <a href="#layanan" class="flink">E-Commerce</a>
+          <a href="#layanan" class="flink">Cloud &amp; DevOps</a>
+          <a href="#layanan" class="flink">Brand Identity</a>
+        </div>
+      </div>
+      <div>
+        <h5 style="font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;color:rgba(255,255,255,0.28);text-transform:uppercase;margin-bottom:16px">Company</h5>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#tentang" class="flink">Tentang Kami</a>
+          <a href="#portfolio" class="flink">Portfolio</a>
+          <a href="#blog" class="flink">Blog</a>
+          <a href="#" class="flink">Karir</a>
+          <a href="#" class="flink">Press Kit</a>
+        </div>
+      </div>
+      <div>
+        <h5 style="font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;color:rgba(255,255,255,0.28);text-transform:uppercase;margin-bottom:16px">Resources</h5>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#" class="flink">Dokumentasi</a>
+          <a href="#" class="flink">Case Studies</a>
+          <a href="#" class="flink">FAQ</a>
+          <a href="#" class="flink">Status Page</a>
+        </div>
+      </div>
+    </div>
+    <div class="divider" style="margin-bottom:24px"></div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:rgba(255,255,255,0.2);letter-spacing:.08em">&copy; 2025 Obotzone.id &mdash; All rights reserved</p>
+      <div style="display:flex;align-items:center;gap:16px">
+        <a href="#" class="flink" style="font-size:.75rem">Privacy</a>
+        <a href="#" class="flink" style="font-size:.75rem">Terms</a>
+        <div style="display:flex;align-items:center;gap:7px">
+          <span class="pd" style="width:6px;height:6px;border-radius:50%;background:#34d399;display:inline-block"></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:rgba(52,211,153,0.55)">All Systems Operational</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+document.getElementById('menuBtn').addEventListener('click', function() {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+document.querySelectorAll('#mobileNav a').forEach(function(a) {
+  a.addEventListener('click', function() { document.getElementById('mobileNav').classList.remove('open'); });
+});
+
+window.addEventListener('scroll', function() {
+  document.getElementById('navbar').style.boxShadow = window.scrollY > 50 ? '0 8px 40px rgba(0,0,0,0.5)' : 'none';
+}, { passive: true });
+
+document.getElementById('cForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('sbtn');
+  var lbl = document.getElementById('sbtnlbl');
+  btn.disabled = true;
+  lbl.textContent = 'Mengirim...';
+  setTimeout(function() {
+    document.getElementById('cForm').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+  }, 1000);
+});
+</script>
 </body>
-  </html>
+</html>
