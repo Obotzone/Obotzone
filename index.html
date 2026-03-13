@@ -8,9 +8,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
+  @font-face{font-family:'Syne';font-display:swap}
+  @font-face{font-family:'Plus Jakarta Sans';font-display:swap}
+  @font-face{font-family:'JetBrains Mono';font-display:swap}
+</style>
+<style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#09090b;color:rgba(255,255,255,0.82);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#09090b;color:rgba(255,255,255,0.82);overflow-x:hidden;-webkit-font-smoothing:antialiased;word-break:break-word;overflow-wrap:break-word}
 a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:#09090b}
@@ -51,16 +56,31 @@ a{text-decoration:none;color:inherit}
 .mnav a{display:block;padding:14px 24px;font-size:.9rem;color:rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.04);transition:color .15s,background .15s}
 .mnav a:hover{color:white;background:rgba(255,255,255,0.04)}
 /* Hero */
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 24px 80px;position:relative;overflow:hidden}
-.hero-in{max-width:1100px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:48px}
-.hero-h{font-family:'Syne',sans-serif;font-weight:800;line-height:1.0;letter-spacing:-.03em;margin-bottom:24px;font-size:clamp(2.8rem,7.5vw,6.5rem)}
-.hero-p{font-size:clamp(.95rem,1.8vw,1.1rem);color:var(--muted);font-weight:300;line-height:1.8;max-width:520px;margin-bottom:40px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,0.055);border-radius:14px;overflow:hidden;gap:1px;max-width:560px}
-.stat{background:rgba(255,255,255,0.025);padding:20px 12px;text-align:center}
-.sv{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:4px;background:linear-gradient(135deg,#22d3ee,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sl{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,0.32);letter-spacing:.12em;text-transform:uppercase}
-.fc{width:230px;flex-shrink:0;animation:floatY 7s ease-in-out infinite}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 24px 80px;position:relative;overflow:hidden}
+.hero-in{max-width:1100px;margin:0 auto;width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:48px}
+.hero-left{flex:1;min-width:0;max-width:640px}
+.hero-h{font-family:'Syne',system-ui,sans-serif;font-weight:800;line-height:1.08;letter-spacing:-.02em;margin-bottom:20px;font-size:clamp(2rem,5vw,5.5rem)}
+.hero-sub3{display:block;color:rgba(255,255,255,0.5);font-weight:600;font-size:clamp(1.1rem,2.8vw,2.8rem);line-height:1.2}
+.hero-p{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:32px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,0.055);border-radius:14px;overflow:hidden;gap:1px}
+.stat{background:rgba(255,255,255,0.025);padding:18px 10px;text-align:center}
+.sv{font-family:'Syne',system-ui,sans-serif;font-weight:800;font-size:1.35rem;margin-bottom:4px;background:linear-gradient(135deg,#22d3ee,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sl{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:rgba(255,255,255,0.32);letter-spacing:.1em;text-transform:uppercase}
+.fc{width:220px;flex-shrink:0;animation:floatY 7s ease-in-out infinite}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+/* mobile: stack vertically */
+@media(max-width:1024px){.fc{display:none!important}}
+@media(max-width:768px){
+  .hero{padding:90px 20px 60px;align-items:flex-start}
+  .hero-in{flex-direction:column;gap:0}
+  .hero-left{max-width:100%;width:100%}
+  .hero-h{font-size:clamp(2rem,9vw,3.2rem);letter-spacing:-.015em}
+  .hero-sub3{font-size:clamp(1rem,5vw,1.5rem)}
+  .hero-p{font-size:.95rem}
+  .hero-ctas .btn{width:100%;justify-content:center}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
 .scan{position:relative;height:2px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;margin-bottom:16px}
 .scan::after{content:'';position:absolute;top:0;left:0;width:33%;height:100%;background:linear-gradient(90deg,transparent,#22d3ee,transparent);animation:scanA 2.8s ease-in-out infinite}
 @keyframes scanA{0%,100%{transform:translateX(-200%)}50%{transform:translateX(500%)}}
@@ -108,14 +128,12 @@ select.fi option{background:#18181f;color:white}
 /* Animations */
 @keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
 .pd{animation:pd 2s ease-in-out infinite}
-/* Responsive */
-@media(max-width:1024px){.fc{display:none!important}}
+/* Responsive — non-hero */
 @media(max-width:900px){.bento{grid-template-columns:1fr}.bw{grid-column:span 1}}
 @media(max-width:768px){
   .nav-links{display:none}.mbtn{display:flex}
   .agrid{grid-template-columns:1fr;gap:40px}
   .sgrid{grid-template-columns:repeat(4,1fr)}
-  .stats{grid-template-columns:repeat(2,1fr);max-width:100%}
   .sec{padding:72px 20px}
 }
 @media(max-width:560px){
@@ -124,6 +142,7 @@ select.fi option{background:#18181f;color:white}
   .fgrid{grid-template-columns:1fr 1fr!important}
   .fbrand{grid-column:span 2!important}
   .ptechs{display:none}
+  .sgrid{grid-template-columns:repeat(4,1fr)}
 }
 </style>
 </head>
@@ -166,23 +185,25 @@ select.fi option{background:#18181f;color:white}
   <div style="position:absolute;top:-100px;left:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,0.07),transparent 65%);pointer-events:none"></div>
   <div style="position:absolute;bottom:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(52,211,153,0.05),transparent 65%);pointer-events:none"></div>
   <div class="hero-in">
-    <div style="flex:1;min-width:0">
-      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px" class="reveal">
+
+    <!-- Kiri: konten utama -->
+    <div class="hero-left">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px" class="reveal">
         <span class="tag te"><span class="pd" style="width:7px;height:7px;border-radius:50%;background:var(--e);display:inline-block"></span>// SYSTEM ONLINE</span>
         <span class="tag tc">v2.0 — 2025</span>
       </div>
       <h1 class="hero-h reveal d1">
         <span style="display:block;color:white">Kami Membangun</span>
         <span class="grad" style="display:block">Produk Digital</span>
-        <span style="display:block;color:rgba(255,255,255,0.5);font-weight:600;font-size:clamp(1.7rem,4.5vw,3.8rem)">Yang Benar&#8209;Benar Bekerja.</span>
+        <span class="hero-sub3">Yang Benar-Benar Bekerja.</span>
       </h1>
       <p class="hero-p reveal d2">Obotzone adalah studio teknologi yang merancang dan mengembangkan website, web app, dan sistem digital dengan performa tinggi — dari konsep hingga produksi.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:60px" class="reveal d3">
-        <a href="#portfolio" class="btn bp" style="font-size:.95rem;padding:14px 32px">
+      <div class="hero-ctas reveal d3">
+        <a href="#portfolio" class="btn bp">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           Lihat Portfolio
         </a>
-        <a href="#kontak" class="btn bg" style="font-size:.95rem;padding:14px 32px">Diskusi Proyek <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#kontak" class="btn bg">Diskusi Proyek <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
       <div class="stats reveal d4">
         <div class="stat"><div class="sv">50+</div><div class="sl">Proyek Selesai</div></div>
@@ -191,6 +212,8 @@ select.fi option{background:#18181f;color:white}
         <div class="stat"><div class="sv">99.9%</div><div class="sl">Uptime SLA</div></div>
       </div>
     </div>
+
+    <!-- Kanan: floating card (desktop only) -->
     <div class="fc glass-card" style="padding:24px">
       <div class="scan"></div>
       <span class="lbl" style="font-size:.6rem;margin-bottom:14px">// PERFORMANCE_METRICS</span>
@@ -199,6 +222,7 @@ select.fi option{background:#18181f;color:white}
       <div class="mr"><span class="ml">Core Web Vitals</span><span class="mv" style="color:var(--e)">PASS</span></div>
       <div class="mr" style="border-bottom:none"><span class="ml">Build Time</span><span class="mv" style="color:var(--c)">1.2s</span></div>
     </div>
+
   </div>
   <div class="divider" style="position:absolute;bottom:0;left:0;right:0"></div>
 </section>
