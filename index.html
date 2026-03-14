@@ -801,11 +801,21 @@ document.getElementById('cForm').addEventListener('submit', function(e) {
   var btn = document.getElementById('sbtn');
   var lbl = document.getElementById('sbtnlbl');
   btn.disabled = true;
-  lbl.textContent = 'Mengirim...';
+  lbl.textContent = 'Membuka WhatsApp...';
+  var nama = document.querySelector('[name="name"]').value;
+  var email = document.querySelector('[name="email"]').value;
+  var layanan = document.querySelector('[name="service"]').value || 'Belum dipilih';
+  var budget = document.querySelector('[name="budget"]').value || 'Belum dipilih';
+  var pesan = document.querySelector('[name="message"]').value;
+  var teks = 'Halo Obotzone! Saya ingin diskusi proyek\n\nNama: ' + nama + '\nEmail: ' + email + '\nLayanan: ' + layanan + '\nBudget: ' + budget + '\n\nDetail Proyek:\n' + pesan;
+  var url = 'https://wa.me/6287779794633?text=' + encodeURIComponent(teks);
   setTimeout(function() {
+    window.open(url, '_blank');
     document.getElementById('cForm').style.display = 'none';
     document.getElementById('success').style.display = 'block';
-  }, 1000);
+    btn.disabled = false;
+    lbl.textContent = 'Kirim Pesan';
+  }, 600);
 });
 </script>
 </body>
