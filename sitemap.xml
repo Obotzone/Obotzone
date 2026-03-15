@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage -->
+  <!-- Halaman Utama -->
   <url>
     <loc>https://obotzone.id/</loc>
     <lastmod>2025-03-15</lastmod>
@@ -9,7 +9,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Aplikasi UMKM Admin System -->
+  <!-- Produk -->
   <url>
     <loc>https://obotzone.id/aplikasi-umkm/</loc>
     <lastmod>2025-03-15</lastmod>
@@ -17,12 +17,62 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- CDR Analyzer -->
   <url>
     <loc>https://obotzone.id/cdr-reader/</loc>
     <lastmod>2025-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Index -->
+  <url>
+    <loc>https://obotzone.id/blog/</loc>
+    <lastmod>2025-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Artikel Blog -->
+  <url>
+    <loc>https://obotzone.id/blog/kenapa-astro-2025/</loc>
+    <lastmod>2025-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://obotzone.id/blog/lighthouse-score-99/</loc>
+    <lastmod>2025-03-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://obotzone.id/blog/deploy-cloudflare-pages/</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://obotzone.id/blog/website-umkm-murah/</loc>
+    <lastmod>2025-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://obotzone.id/blog/tailwind-vs-css-biasa/</loc>
+    <lastmod>2025-02-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://obotzone.id/blog/seo-website-indonesia/</loc>
+    <lastmod>2025-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
