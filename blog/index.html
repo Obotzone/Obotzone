@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Blog — Insight & Tutorial Web Development | Obotzone</title>
+<meta name="description" content="Artikel seputar web development, UI/UX design, performa website, dan tips digital untuk bisnis Indonesia dari tim Obotzone."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://obotzone.id/blog/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://obotzone.id/blog/"/>
+<meta property="og:title" content="Blog Obotzone — Insight & Tutorial Web Development"/>
+<meta property="og:description" content="Artikel seputar web development, UI/UX design, performa website, dan tips digital untuk bisnis Indonesia."/>
+<meta property="og:image" content="https://obotzone.id/og-image.png"/>
+<meta property="og:locale" content="id_ID"/>
+<meta property="og:site_name" content="Obotzone"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Plus Jakarta Sans',-apple-system,sans-serif;background:#09090b;color:rgba(255,255,255,0.82);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#09090b}
+::-webkit-scrollbar-thumb{background:rgba(34,211,238,0.35);border-radius:4px}
+:root{--c:#22d3ee;--e:#34d399;--bdr:rgba(255,255,255,0.07);--muted:rgba(255,255,255,0.42)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.grad{background:linear-gradient(135deg,#22d3ee 0%,#60a5fa 50%,#34d399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lbl{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.22em;color:var(--c);text-transform:uppercase;display:block;margin-bottom:16px}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.06em;white-space:nowrap}
+.tc{background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.2);color:var(--c)}
+.te{background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.2);color:var(--e)}
+.tp{background:rgba(96,165,250,0.07);border:1px solid rgba(96,165,250,0.2);color:#60a5fa}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;border:none;transition:transform .25s,background .25s,border-color .25s,box-shadow .25s;text-decoration:none}
+.btn:hover{transform:translateY(-2px)}
+.bp{background:linear-gradient(135deg,rgba(34,211,238,0.15),rgba(52,211,153,0.08));border:1px solid rgba(34,211,238,0.4);color:var(--c)}
+.bp:hover{background:linear-gradient(135deg,rgba(34,211,238,0.25),rgba(52,211,153,0.15));border-color:rgba(34,211,238,0.7);box-shadow:0 0 30px rgba(34,211,238,0.2)}
+/* Navbar */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(9,9,11,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1rem;color:white}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nl{padding:8px 16px;border-radius:8px;font-size:.875rem;font-weight:500;color:rgba(255,255,255,0.5);transition:color .2s,background .2s}
+.nl:hover,.nl.active{color:white;background:rgba(255,255,255,0.06)}
+.mbtn{display:none;padding:8px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);cursor:pointer}
+.mnav{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1);background:rgba(9,9,11,0.95);border-bottom:1px solid rgba(255,255,255,0.06)}
+.mnav.open{max-height:320px}
+.mnav a{display:block;padding:14px 24px;font-size:.9rem;color:rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.04);transition:color .15s}
+.mnav a:hover{color:white;background:rgba(255,255,255,0.04)}
+/* Hero */
+.hero{padding:120px 24px 64px;background:radial-gradient(ellipse 800px 500px at 20% 50%,rgba(34,211,238,0.055) 0%,transparent 65%),#09090b;border-bottom:1px solid var(--bdr)}
+/* Filter bar */
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px}
+.filter-btn{padding:6px 16px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);background:transparent;cursor:pointer;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:rgba(34,211,238,0.08);border-color:rgba(34,211,238,0.3);color:var(--c)}
+/* Blog grid */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.blog-card{border-radius:16px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.025);overflow:hidden;transition:border-color .3s,transform .3s,background .3s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:rgba(34,211,238,0.22);transform:translateY(-4px);background:rgba(255,255,255,0.04)}
+.blog-thumb{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0}
+.blog-body{padding:22px;display:flex;flex-direction:column;flex:1}
+.blog-meta{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.blog-date{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.25)}
+.blog-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1rem;color:white;line-height:1.45;margin-bottom:10px;transition:color .2s}
+.blog-card:hover .blog-title{color:var(--c)}
+.blog-excerpt{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.7;flex:1;margin-bottom:16px}
+.blog-read{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(34,211,238,0.6);transition:gap .2s}
+.blog-card:hover .blog-read{gap:10px;color:var(--c)}
+/* Featured card */
+.blog-card.featured{grid-column:span 2;flex-direction:row}
+.blog-card.featured .blog-thumb{width:280px;height:auto;flex-shrink:0;border-bottom:none;border-right:1px solid rgba(255,255,255,0.06)}
+.blog-card.featured .blog-title{font-size:1.25rem}
+/* Newsletter */
+.newsletter{background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.12);border-radius:16px;padding:40px;text-align:center;margin-top:64px}
+/* Footer */
+footer{border-top:1px solid var(--bdr);padding:40px 24px;margin-top:80px}
+.flink{font-size:.875rem;color:rgba(255,255,255,0.35);transition:color .15s}
+.flink:hover{color:rgba(255,255,255,0.8)}
+/* Responsive */
+@media(max-width:900px){
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-card.featured{grid-column:span 2;flex-direction:column}
+  .blog-card.featured .blog-thumb{width:100%;height:200px;border-right:none;border-bottom:1px solid rgba(255,255,255,0.06)}
+}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr}
+  .blog-card.featured{grid-column:span 1}
+  .nav-links{display:none}.mbtn{display:flex}
+}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="nav" id="navbar">
+  <div class="nav-in">
+    <a href="/" class="logo">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+        <path d="M16 2L28 9L28 23L16 30L4 23L4 9Z" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.1)"/>
+        <path d="M16 8L22 11.5L22 18.5L16 22L10 18.5L10 11.5Z" fill="#22d3ee" opacity="0.7"/>
+      </svg>
+      Obot<span class="grad">zone</span>
+    </a>
+    <nav class="nav-links">
+      <a class="nl" href="/">Home</a>
+      <a class="nl" href="/#layanan">Layanan</a>
+      <a class="nl" href="/#portfolio">Portfolio</a>
+      <a class="nl active" href="/blog/">Blog</a>
+      <a class="nl" href="/#kontak">Kontak</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="/#kontak" class="btn bp" style="padding:9px 20px;font-size:.8rem">Mulai Proyek</a>
+      <button class="mbtn" id="menuBtn" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mnav" id="mobileNav">
+    <a href="/">Home</a>
+    <a href="/#layanan">Layanan</a>
+    <a href="/#portfolio">Portfolio</a>
+    <a href="/blog/" style="color:var(--c)">Blog</a>
+    <a href="/#kontak">Kontak</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="lbl">// BLOG OBOTZONE</span>
+      <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin-bottom:16px;color:white">
+        Insight &amp; <span class="grad">Tutorial</span>
+      </h1>
+      <p style="color:var(--muted);font-size:1rem;font-weight:300;max-width:520px;line-height:1.8">
+        Tips, tutorial, dan insight seputar web development, UI/UX design, dan teknologi digital untuk bisnis Indonesia.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG LIST -->
+<section style="padding:64px 24px 0">
+  <div class="wrap">
+
+    <!-- Filter -->
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" onclick="filterPosts('semua',this)">Semua</button>
+      <button class="filter-btn" onclick="filterPosts('web-dev',this)">Web Dev</button>
+      <button class="filter-btn" onclick="filterPosts('performance',this)">Performance</button>
+      <button class="filter-btn" onclick="filterPosts('devops',this)">DevOps</button>
+      <button class="filter-btn" onclick="filterPosts('bisnis',this)">Bisnis Digital</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="blog-grid" id="blogGrid">
+
+      <!-- ARTIKEL 1 — Featured -->
+      <a href="/blog/kenapa-astro-2025/" class="blog-card featured reveal" data-cat="web-dev">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(34,211,238,0.1),rgba(96,165,250,0.06))">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(34,211,238,0.15),transparent 60%)"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:rgba(34,211,238,0.6);position:relative">&lt;astro /&gt;</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="tag tc">Web Dev</span>
+            <span class="blog-date">15 Mar 2025</span>
+            <span class="blog-date">· 5 min baca</span>
+          </div>
+          <h2 class="blog-title">Kenapa Astro Jadi Pilihan Utama Kami untuk Website 2025</h2>
+          <p class="blog-excerpt">Perbandingan mendalam Astro vs Next.js untuk website marketing dan landing page. Mana yang lebih cepat, lebih hemat, dan lebih mudah di-deploy ke Cloudflare Pages?</p>
+          <span class="blog-read">Baca artikel <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- ARTIKEL 2 -->
+      <a href="/blog/lighthouse-score-99/" class="blog-card reveal d1" data-cat="performance">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,0.08),rgba(34,211,238,0.04))">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(52,211,153,0.15),transparent 60%)"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:rgba(52,211,153,0.6);position:relative">perf: 99/100</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="tag te">Performance</span>
+            <span class="blog-date">10 Mar 2025</span>
+            <span class="blog-date">· 8 min baca</span>
+          </div>
+          <h2 class="blog-title">Cara Dapat Lighthouse Score 99 Tanpa Ribet</h2>
+          <p class="blog-excerpt">Teknik optimasi gambar, font, dan JavaScript yang kami pakai di setiap proyek klien.</p>
+          <span class="blog-read">Baca artikel <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- ARTIKEL 3 -->
+      <a href="/blog/deploy-cloudflare-pages/" class="blog-card reveal d2" data-cat="devops">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(96,165,250,0.08),rgba(34,211,238,0.04))">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(96,165,250,0.15),transparent 60%)"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:rgba(96,165,250,0.6);position:relative">cf: deploy</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="tag tp">DevOps</span>
+            <span class="blog-date">5 Mar 2025</span>
+            <span class="blog-date">· 6 min baca</span>
+          </div>
+          <h2 class="blog-title">Deploy Gratis ke Cloudflare Pages: Panduan Lengkap</h2>
+          <p class="blog-excerpt">Dari GitHub repo ke domain custom dalam 10 menit, step by step untuk pemula.</p>
+          <span class="blog-read">Baca artikel <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- ARTIKEL 4 -->
+      <a href="/blog/website-umkm-murah/" class="blog-card reveal d3" data-cat="bisnis">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(250,204,21,0.06),rgba(52,211,153,0.04))">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(250,204,21,0.1),transparent 60%)"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:rgba(250,204,21,0.5);position:relative">Rp 3jt → live</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="tag" style="background:rgba(250,204,21,0.07);border:1px solid rgba(250,204,21,0.2);color:#facc15">Bisnis Digital</span>
+            <span class="blog-date">28 Feb 2025</span>
+            <span class="blog-date">· 4 min baca</span>
+          </div>
+          <h2 class="blog-title">Berapa Budget yang Realistis untuk Website UMKM?</h2>
+          <p class="blog-excerpt">Breakdown biaya pembuatan website untuk UMKM Indonesia — dari landing page sampai web app lengkap.</p>
+          <span class="blog-read">Baca artikel <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- ARTIKEL 5 -->
+      <a href="/blog/tailwind-vs-css-biasa/" class="blog-card reveal d4" data-cat="web-dev">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(34,211,238,0.06),rgba(52,211,153,0.04))">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(34,211,238,0.12),transparent 60%)"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:rgba(34,211,238,0.5);position:relative">tw vs css</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="tag tc">Web Dev</span>
+            <span class="blog-date">20 Feb 2025</span>
+            <span class="blog-date">· 5 min baca</span>
+          </div>
+          <h2 class="blog-title">Tailwind CSS vs CSS Biasa: Mana yang Lebih Baik?</h2>
+          <p class="blog-excerpt">Kapan pakai Tailwind, kapan tetap pakai CSS vanilla. Pengalaman kami setelah 50+ proyek.</p>
+          <span class="blog-read">Baca artikel <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- ARTIKEL 6 -->
+      <a href="/blog/seo-website-indonesia/" class="blog-card reveal d5" data-cat="bisnis">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,rgba(52,211,153,0.06),rgba(96,165,250,0.04))">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 60%,rgba(52,211,153,0.12),transparent 60%)"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:rgba(52,211,153,0.5);position:relative">SEO: rank #1</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="tag" style="background:rgba(250,204,21,0.07);border:1px solid rgba(250,204,21,0.2);color:#facc15">Bisnis Digital</span>
+            <span class="blog-date">15 Feb 2025</span>
+            <span class="blog-date">· 7 min baca</span>
+          </div>
+          <h2 class="blog-title">SEO untuk Website Indonesia: Panduan Praktis 2025</h2>
+          <p class="blog-excerpt">Strategi SEO yang benar-benar bekerja untuk bisnis lokal Indonesia — dari meta tag sampai backlink.</p>
+          <span class="blog-read">Baca artikel <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Newsletter CTA -->
+    <div class="newsletter reveal" style="margin-top:64px">
+      <span class="lbl" style="text-align:center;display:block">// STAY UPDATED</span>
+      <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.5rem;color:white;margin-bottom:10px">Dapat Artikel Terbaru via WhatsApp</h3>
+      <p style="color:var(--muted);font-size:.9rem;font-weight:300;margin-bottom:24px">Artikel baru, tips, dan update dari Obotzone langsung ke WhatsApp kamu.</p>
+      <a href="https://wa.me/6287779794633?text=Halo%20Obotzone!%20Saya%20mau%20berlangganan%20update%20artikel%20terbaru." class="btn bp" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 0118 1.18a2 2 0 012 2v3"/></svg>
+        Subscribe via WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
+    <a href="/" class="logo" style="font-size:1rem">
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9L28 23L16 30L4 23L4 9Z" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.1)"/><path d="M16 8L22 11.5L22 18.5L16 22L10 18.5L10 11.5Z" fill="#22d3ee" opacity="0.7"/></svg>
+      Obot<span class="grad">zone</span>
+    </a>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <a href="/" class="flink">Home</a>
+      <a href="/#layanan" class="flink">Layanan</a>
+      <a href="/#portfolio" class="flink">Portfolio</a>
+      <a href="/#kontak" class="flink">Kontak</a>
+    </div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:rgba(255,255,255,0.2)">&copy; 2025 Obotzone.id</p>
+  </div>
+</footer>
+
+<script>
+var obs = new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('in')})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+document.getElementById('menuBtn').addEventListener('click',function(){document.getElementById('mobileNav').classList.toggle('open')});
+
+function filterPosts(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  document.querySelectorAll('.blog-card').forEach(function(card){
+    if (cat === 'semua' || card.dataset.cat === cat) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
