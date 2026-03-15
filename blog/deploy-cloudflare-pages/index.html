@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Deploy Gratis ke Cloudflare Pages: Panduan Lengkap | Obotzone Blog</title>
+<meta name="description" content="Panduan step by step deploy website gratis ke Cloudflare Pages. Dari GitHub repo ke domain custom dalam 10 menit, cocok untuk pemula."/>
+<meta name="keywords" content="cloudflare pages tutorial, deploy website gratis, github cloudflare pages, domain custom cloudflare, hosting gratis indonesia"/>
+<meta name="author" content="Obotzone"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://obotzone.id/blog/deploy-cloudflare-pages/"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://obotzone.id/blog/deploy-cloudflare-pages/"/>
+<meta property="og:title" content="Deploy Gratis ke Cloudflare Pages: Panduan Lengkap"/>
+<meta property="og:description" content="Panduan step by step deploy website gratis ke Cloudflare Pages. Dari GitHub repo ke domain custom dalam 10 menit."/>
+<meta property="og:image" content="https://obotzone.id/og-image.png"/>
+<meta property="og:locale" content="id_ID"/>
+<meta property="og:site_name" content="Obotzone"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Deploy Website ke Cloudflare Pages",
+  "description": "Panduan step by step deploy website gratis ke Cloudflare Pages dari GitHub",
+  "url": "https://obotzone.id/blog/deploy-cloudflare-pages/",
+  "author": {"@type": "Organization", "name": "Obotzone"},
+  "step": [
+    {"@type": "HowToStep", "name": "Buat akun Cloudflare", "text": "Daftar di cloudflare.com dengan email"},
+    {"@type": "HowToStep", "name": "Hubungkan GitHub repo", "text": "Connect repo GitHub ke Cloudflare Pages"},
+    {"@type": "HowToStep", "name": "Set build settings", "text": "Konfigurasi build command dan output directory"},
+    {"@type": "HowToStep", "name": "Deploy dan pasang domain", "text": "Deploy otomatis dan hubungkan domain custom"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Plus Jakarta Sans',-apple-system,sans-serif;background:#09090b;color:rgba(255,255,255,0.82);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#09090b}::-webkit-scrollbar-thumb{background:rgba(34,211,238,0.35);border-radius:4px}
+:root{--c:#22d3ee;--e:#34d399;--b:#60a5fa;--bdr:rgba(255,255,255,0.07);--muted:rgba(255,255,255,0.42)}
+.grad{background:linear-gradient(135deg,#22d3ee 0%,#60a5fa 50%,#34d399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.06em;white-space:nowrap}
+.tp{background:rgba(96,165,250,0.07);border:1px solid rgba(96,165,250,0.2);color:var(--b)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;border:none;transition:transform .2s,background .2s;text-decoration:none}
+.btn:hover{transform:translateY(-2px)}
+.bp{background:linear-gradient(135deg,rgba(34,211,238,0.15),rgba(52,211,153,0.08));border:1px solid rgba(34,211,238,0.4);color:var(--c)}
+.bp:hover{background:linear-gradient(135deg,rgba(34,211,238,0.25),rgba(52,211,153,0.15));border-color:rgba(34,211,238,0.7)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(9,9,11,0.85);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1rem;color:white}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nl{padding:8px 16px;border-radius:8px;font-size:.875rem;font-weight:500;color:rgba(255,255,255,0.5);transition:color .2s,background .2s}
+.nl:hover,.nl.active{color:white;background:rgba(255,255,255,0.06)}
+.mbtn{display:none;padding:8px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);cursor:pointer}
+.mnav{max-height:0;overflow:hidden;transition:max-height .4s;background:rgba(9,9,11,0.95);border-bottom:1px solid rgba(255,255,255,0.06)}
+.mnav.open{max-height:320px}
+.mnav a{display:block;padding:14px 24px;font-size:.9rem;color:rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.04)}
+.mnav a:hover{color:white;background:rgba(255,255,255,0.04)}
+.progress{position:fixed;top:64px;left:0;height:2px;background:linear-gradient(90deg,#60a5fa,#22d3ee);z-index:49;width:0%}
+.article-wrap{max-width:720px;margin:0 auto;padding:0 24px}
+.article-hero{padding:100px 24px 56px;border-bottom:1px solid var(--bdr);background:radial-gradient(ellipse 700px 400px at 20% 60%,rgba(96,165,250,0.045) 0%,transparent 65%),#09090b}
+.article-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:20px}
+.article-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;color:white;margin-bottom:16px}
+.article-lead{font-size:1.1rem;color:var(--muted);font-weight:300;line-height:1.8}
+.author-bar{display:flex;align-items:center;gap:12px;padding:16px 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);margin:24px 0}
+.author-av{width:40px;height:40px;border-radius:50%;background:rgba(96,165,250,0.15);border:1px solid rgba(96,165,250,0.2);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--b);font-weight:600;flex-shrink:0}
+.article-content{padding:48px 0;line-height:1.85;font-size:1rem;color:rgba(255,255,255,0.78)}
+.article-content h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.5rem;color:white;margin:48px 0 16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.article-content h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.15rem;color:white;margin:32px 0 12px}
+.article-content p{margin-bottom:20px}
+.article-content ul,.article-content ol{margin:0 0 20px 24px;display:flex;flex-direction:column;gap:8px}
+.article-content li{color:rgba(255,255,255,0.72)}
+.article-content strong{color:white;font-weight:600}
+.article-content a{color:var(--b);text-decoration:underline;text-underline-offset:3px}
+.article-content blockquote{border-left:3px solid var(--b);padding:12px 20px;margin:24px 0;background:rgba(96,165,250,0.04);border-radius:0 8px 8px 0;font-style:italic;color:rgba(255,255,255,0.6)}
+.article-content pre{background:#111117;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:20px;overflow-x:auto;margin:24px 0;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.6;color:#e2e8f0}
+.article-content code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(96,165,250,0.08);color:var(--b);padding:2px 6px;border-radius:4px}
+.article-content pre code{background:none;color:#e2e8f0;padding:0}
+.callout{background:rgba(96,165,250,0.05);border:1px solid rgba(96,165,250,0.15);border-radius:12px;padding:20px 24px;margin:28px 0}
+.callout-w{background:rgba(250,204,21,0.05);border-color:rgba(250,204,21,0.15)}
+/* Step boxes */
+.step-box{display:flex;gap:16px;padding:20px;background:rgba(255,255,255,0.025);border:1px solid var(--bdr);border-radius:12px;margin:12px 0}
+.step-num{width:36px;height:36px;border-radius:50%;background:rgba(96,165,250,0.15);border:1px solid rgba(96,165,250,0.3);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--b);font-weight:600;flex-shrink:0}
+.step-body h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.95rem;color:white;margin-bottom:6px}
+.step-body p{font-size:.875rem;color:var(--muted);font-weight:300;line-height:1.65;margin:0}
+.toc{background:rgba(255,255,255,0.025);border:1px solid var(--bdr);border-radius:12px;padding:20px 24px;margin-bottom:40px}
+.toc h4{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;color:var(--b);text-transform:uppercase;margin-bottom:14px}
+.toc ol{margin-left:16px;display:flex;flex-direction:column;gap:8px}
+.toc a{font-size:.875rem;color:rgba(255,255,255,0.5);transition:color .15s}
+.toc a:hover{color:var(--b)}
+.article-footer{padding:40px 0;border-top:1px solid var(--bdr);margin-top:16px}
+.related{background:rgba(255,255,255,0.025);border:1px solid var(--bdr);border-radius:16px;padding:32px;margin-top:48px}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+.related-card{padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02);transition:border-color .2s}
+.related-card:hover{border-color:rgba(96,165,250,0.2)}
+.related-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.9rem;color:white;margin-bottom:4px;line-height:1.4}
+.related-card span{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,0.3)}
+.cta-box{background:linear-gradient(135deg,rgba(96,165,250,0.06),rgba(34,211,238,0.03));border:1px solid rgba(96,165,250,0.15);border-radius:16px;padding:32px;text-align:center;margin-top:48px}
+footer{border-top:1px solid var(--bdr);padding:40px 24px;margin-top:64px}
+.flink{font-size:.875rem;color:rgba(255,255,255,0.35);transition:color .15s}.flink:hover{color:rgba(255,255,255,0.8)}
+@media(max-width:768px){.nav-links{display:none}.mbtn{display:flex}.related-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="logo"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9L28 23L16 30L4 23L4 9Z" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.1)"/><path d="M16 8L22 11.5L22 18.5L16 22L10 18.5L10 11.5Z" fill="#22d3ee" opacity="0.7"/></svg>Obot<span class="grad">zone</span></a>
+    <nav class="nav-links"><a class="nl" href="/">Home</a><a class="nl" href="/#layanan">Layanan</a><a class="nl active" href="/blog/">Blog</a><a class="nl" href="/#kontak">Kontak</a></nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="/#kontak" class="btn bp" style="padding:9px 20px;font-size:.8rem">Mulai Proyek</a>
+      <button class="mbtn" id="menuBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg></button>
+    </div>
+  </div>
+  <div class="mnav" id="mobileNav"><a href="/">Home</a><a href="/blog/" style="color:var(--c)">Blog</a><a href="/#kontak">Kontak</a></div>
+</header>
+
+<section class="article-hero">
+  <div class="article-wrap">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:24px;font-size:.8rem;color:rgba(255,255,255,0.3)">
+      <a href="/" style="color:rgba(255,255,255,0.3)" onmouseover="this.style.color='#22d3ee'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Home</a><span>/</span>
+      <a href="/blog/" style="color:rgba(255,255,255,0.3)" onmouseover="this.style.color='#22d3ee'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Blog</a><span>/</span>
+      <span style="color:rgba(255,255,255,0.5)">Deploy Cloudflare Pages</span>
+    </div>
+    <div class="article-meta">
+      <span class="tag tp">DevOps</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,0.3)">5 Maret 2025 · 6 menit baca</span>
+    </div>
+    <h1 class="article-title">Deploy Gratis ke <span class="grad">Cloudflare Pages</span>: Panduan Lengkap</h1>
+    <p class="article-lead">Dari GitHub repo ke domain custom dalam 10 menit — panduan step by step untuk pemula yang ingin hosting website gratis dengan performa global.</p>
+    <div class="author-bar">
+      <div class="author-av">OZ</div>
+      <div><div style="font-weight:600;font-size:.9rem;color:white">Tim Obotzone</div><div style="font-size:.78rem;color:rgba(255,255,255,0.35)">DevOps & Deployment · obotzone.id</div></div>
+      <a href="https://wa.me/6287779794633" target="_blank" style="margin-left:auto;font-size:.78rem;color:rgba(255,255,255,0.35)" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Share</a>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="article-wrap">
+    <div class="article-content">
+      <div class="toc">
+        <h4>Daftar Isi</h4>
+        <ol>
+          <li><a href="#kenapa-cloudflare">Kenapa Cloudflare Pages?</a></li>
+          <li><a href="#persiapan">Persiapan</a></li>
+          <li><a href="#langkah">Langkah-langkah Deploy</a></li>
+          <li><a href="#domain-custom">Pasang Domain Custom</a></li>
+          <li><a href="#tips">Tips dan Troubleshooting</a></li>
+        </ol>
+      </div>
+
+      <p>Salah satu pertanyaan paling sering dari klien kami: <em>"Kalau sudah jadi websitenya, hosting di mana yang murah tapi cepat?"</em></p>
+      <p>Jawaban kami selalu sama: <strong>Cloudflare Pages</strong>. Gratis untuk project personal dan bisnis kecil, deploy otomatis dari GitHub, dan CDN global di 300+ kota termasuk Jakarta dan Singapura.</p>
+
+      <h2 id="kenapa-cloudflare">Kenapa Cloudflare Pages?</h2>
+      <table>
+        <tr><th>Fitur</th><th>Cloudflare Pages</th><th>Vercel (Free)</th><th>Netlify (Free)</th></tr>
+        <tr><td>Bandwidth</td><td>Unlimited</td><td>100GB/bulan</td><td>100GB/bulan</td></tr>
+        <tr><td>Build menit</td><td>500/bulan</td><td>6000/bulan</td><td>300/bulan</td></tr>
+        <tr><td>Custom domain</td><td>Unlimited</td><td>1</td><td>1</td></tr>
+        <tr><td>CDN locations</td><td>300+</td><td>~30</td><td>~30</td></tr>
+        <tr><td>DDoS protection</td><td>Included</td><td>Tidak</td><td>Tidak</td></tr>
+      </table>
+      <p>Untuk website statis atau Astro/Next.js dengan output static, Cloudflare Pages adalah pilihan terbaik dari segi performa dan harga.</p>
+
+      <h2 id="persiapan">Persiapan</h2>
+      <p>Sebelum mulai, pastikan kamu sudah punya:</p>
+      <ul>
+        <li>Akun <strong>GitHub</strong> dengan repository berisi kode website</li>
+        <li>Akun <strong>Cloudflare</strong> (daftar gratis di cloudflare.com)</li>
+        <li>Domain (opsional — bisa pakai subdomain <code>*.pages.dev</code> gratis)</li>
+      </ul>
+
+      <div class="callout">
+        <strong style="color:var(--b)">Struktur repo yang diperlukan:</strong><br>
+        Untuk HTML statis: <code>index.html</code> di root repo<br>
+        Untuk Astro: <code>package.json</code> + <code>astro.config.mjs</code><br>
+        Untuk Next.js static: <code>next.config.js</code> dengan <code>output: 'export'</code>
+      </div>
+
+      <h2 id="langkah">Langkah-langkah Deploy</h2>
+
+      <div class="step-box">
+        <div class="step-num">1</div>
+        <div class="step-body"><h4>Login ke Cloudflare Dashboard</h4><p>Buka <strong>dash.cloudflare.com</strong> → login → klik <strong>Workers &amp; Pages</strong> di sidebar kiri.</p></div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">2</div>
+        <div class="step-body"><h4>Buat Project Baru</h4><p>Klik <strong>Create application</strong> → pilih tab <strong>Pages</strong> → klik <strong>Connect to Git</strong>.</p></div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">3</div>
+        <div class="step-body"><h4>Hubungkan GitHub</h4><p>Klik <strong>Connect GitHub</strong> → authorize Cloudflare → pilih repository yang ingin di-deploy.</p></div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">4</div>
+        <div class="step-body"><h4>Konfigurasi Build Settings</h4><p>Isi sesuai stack yang dipakai (lihat tabel di bawah) → klik <strong>Save and Deploy</strong>.</p></div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">5</div>
+        <div class="step-body"><h4>Tunggu Build Selesai</h4><p>Proses build biasanya 1–3 menit. Setelah selesai, website langsung live di <code>nama-project.pages.dev</code>.</p></div>
+      </div>
+
+      <h3>Build Settings per Framework</h3>
+      <table>
+        <tr><th>Framework</th><th>Build Command</th><th>Output Directory</th></tr>
+        <tr><td>HTML Statis</td><td>(kosongkan)</td><td>/</td></tr>
+        <tr><td>Astro</td><td>npm run build</td><td>dist</td></tr>
+        <tr><td>Next.js (static)</td><td>npm run build</td><td>out</td></tr>
+        <tr><td>Vite</td><td>npm run build</td><td>dist</td></tr>
+      </table>
+
+      <h2 id="domain-custom">Pasang Domain Custom</h2>
+      <p>Setelah website live, kamu bisa hubungkan domain sendiri secara gratis:</p>
+      <ol>
+        <li>Di project Cloudflare Pages → klik tab <strong>Custom domains</strong></li>
+        <li>Klik <strong>Set up a custom domain</strong></li>
+        <li>Masukkan domain kamu (misal: <code>obotzone.id</code>)</li>
+        <li>Kalau domain sudah di Cloudflare DNS: record CNAME otomatis ditambahkan</li>
+        <li>Kalau domain di registrar lain: tambahkan CNAME record manual</li>
+      </ol>
+
+      <pre># CNAME record yang perlu ditambahkan:
+# Name: @ (atau www)
+# Target: nama-project.pages.dev</pre>
+
+      <div class="callout callout-w">
+        <strong style="color:#facc15">Catatan:</strong> SSL/HTTPS otomatis diaktifkan oleh Cloudflare setelah domain terhubung. Tidak perlu setup manual.
+      </div>
+
+      <h2 id="tips">Tips dan Troubleshooting</h2>
+
+      <h3>Auto-deploy setiap push ke main</h3>
+      <p>Setiap kali kamu push commit ke branch <code>main</code>, Cloudflare Pages otomatis build dan deploy ulang. Tidak perlu trigger manual.</p>
+
+      <h3>Preview deployment untuk setiap PR</h3>
+      <p>Setiap Pull Request otomatis mendapat URL preview tersendiri. Berguna untuk review perubahan sebelum merge ke production.</p>
+
+      <h3>Build gagal? Cek ini dulu</h3>
+      <ul>
+        <li>Node.js version: set di <strong>Settings → Environment variables</strong>, tambahkan <code>NODE_VERSION = 20</code></li>
+        <li>Build command salah: pastikan sesuai tabel di atas</li>
+        <li>Output directory salah: cek folder yang di-generate setelah build lokal</li>
+      </ul>
+
+      <blockquote>Kalau masih bingung dengan proses deploy, kami siap bantu via WhatsApp. Setup Cloudflare Pages biasanya selesai dalam 15 menit bersama kami.</blockquote>
+
+      <p>Dengan Cloudflare Pages, kamu dapat hosting gratis yang sebenarnya gratis — bukan trial, bukan limited. Dan performa globalnya sulit ditandingi platform lain di tier gratis.</p>
+    </div>
+
+    <div class="article-footer">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag tp">DevOps</span><span class="tag tp">Cloudflare</span><span class="tag tp">Deploy</span></div>
+        <div style="display:flex;gap:10px">
+          <a href="https://wa.me/?text=Baca+artikel+ini:+https://obotzone.id/blog/deploy-cloudflare-pages/" target="_blank" class="btn" style="background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);color:#25d366;padding:9px 18px;font-size:.8rem">Share</a>
+          <a href="/blog/" class="btn" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);padding:9px 18px;font-size:.8rem">&#8592; Semua Artikel</a>
+        </div>
+      </div>
+    </div>
+    <div class="related">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;color:var(--b);text-transform:uppercase;margin-bottom:8px">// Artikel Terkait</div>
+      <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:1.1rem;color:white">Baca Juga</h3>
+      <div class="related-grid">
+        <a href="/blog/kenapa-astro-2025/" class="related-card"><h4>Kenapa Astro Jadi Pilihan Utama Kami untuk Website 2025</h4><span>Web Dev · 5 min baca</span></a>
+        <a href="/blog/lighthouse-score-99/" class="related-card"><h4>Cara Dapat Lighthouse Score 99 Tanpa Ribet</h4><span>Performance · 8 min baca</span></a>
+      </div>
+    </div>
+    <div class="cta-box">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;color:var(--b);text-transform:uppercase;margin-bottom:12px">// Mau Dibantu Setup?</div>
+      <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.3rem;color:white;margin-bottom:10px">Kami Setup Cloudflare Pages untuk Kamu</h3>
+      <p style="color:var(--muted);font-size:.9rem;font-weight:300;margin-bottom:24px">Termasuk domain custom, SSL, dan konfigurasi optimal. Selesai dalam 1 hari kerja.</p>
+      <a href="/#kontak" class="btn bp">Hubungi Kami →</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
+    <a href="/" class="logo" style="font-size:1rem"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M16 2L28 9L28 23L16 30L4 23L4 9Z" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.1)"/><path d="M16 8L22 11.5L22 18.5L16 22L10 18.5L10 11.5Z" fill="#22d3ee" opacity="0.7"/></svg>Obot<span class="grad">zone</span></a>
+    <div style="display:flex;gap:20px"><a href="/blog/" class="flink">Blog</a><a href="/#layanan" class="flink">Layanan</a><a href="/#kontak" class="flink">Kontak</a></div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:.62rem;color:rgba(255,255,255,0.2)">&copy; 2025 Obotzone.id</p>
+  </div>
+</footer>
+<script>
+document.getElementById('menuBtn').addEventListener('click',function(){document.getElementById('mobileNav').classList.toggle('open')});
+window.addEventListener('scroll',function(){var d=document.documentElement;document.getElementById('progress').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100+'%'},{passive:true});
+</script>
+</body>
+</html>
