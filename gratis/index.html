@@ -621,6 +621,9 @@ const obs = new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 /* ── Form submit ────────────────────────────── */
+// ⚙️ GANTI dengan nomor WA admin kamu
+const ADMIN_WA = '6287779794633';
+
 document.getElementById('downloadForm').addEventListener('submit', function(e){
   e.preventDefault();
   const nama  = document.getElementById('nama').value.trim();
@@ -632,22 +635,22 @@ document.getElementById('downloadForm').addEventListener('submit', function(e){
   document.getElementById('spinner').style.display = 'block';
   document.getElementById('submitBtn').disabled = true;
 
-  // Format WA number
-  let waNum = wa.startsWith('0') ? '62' + wa.slice(1) : wa;
+  // Format nomor WA user (untuk disimpan sebagai data lead saja)
+  const waUser = wa.startsWith('0') ? '62' + wa.slice(1) : wa;
 
-  // Encode pre-filled WA message
+  // Pesan yang akan dikirim USER ke ADMIN
   const msg = encodeURIComponent(
-    `Halo, saya ${nama} pemilik ${usaha}. Saya ingin download aplikasi UMKM Admin gratis. Mohon kirimkan link-nya ya kak 🙏`
+    `Halo kak, saya ${nama} pemilik ${usaha}. Saya ingin download aplikasi UMKM Admin gratis. Mohon kirimkan link-nya ya kak 🙏`
   );
 
-  // Save to localStorage (optional CRM lite)
+  // Simpan data lead ke localStorage (mini CRM)
   const leads = JSON.parse(localStorage.getItem('umkm_leads') || '[]');
-  leads.push({ nama, wa: waNum, usaha, time: new Date().toISOString() });
+  leads.push({ nama, wa: waUser, usaha, time: new Date().toISOString() });
   localStorage.setItem('umkm_leads', JSON.stringify(leads));
 
   setTimeout(()=>{
-    // Redirect to success page, pass to WA
-    window.location.href = `sukses.html?nama=${encodeURIComponent(nama)}&wa=${waNum}&usaha=${encodeURIComponent(usaha)}&msg=${msg}`;
+    // Redirect ke halaman sukses — kirim nomor ADMIN, bukan nomor user
+    window.location.href = `sukses.html?nama=${encodeURIComponent(nama)}&wa=${ADMIN_WA}&usaha=${encodeURIComponent(usaha)}&msg=${msg}`;
   }, 1000);
 });
 
