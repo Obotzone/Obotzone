@@ -133,7 +133,7 @@
   </div>
 
   <div class="btn-stack">
-    <a href="https://wa.me/6287779794633" class="btn btn-wa" id="btnWa">
+    <a href="#" class="btn btn-wa" id="btnWa">
       💬 Buka WhatsApp &amp; Dapatkan Link
     </a>
     <a href="https://chat.whatsapp.com/KLZGlaRtd2P5zZvuHiEJ82?mode=gi_t" target="_blank" class="btn btn-grup">
@@ -147,8 +147,10 @@
 // Parse URL params
 const params = new URLSearchParams(window.location.search);
 const nama  = params.get('nama') || '';
-const waNum = params.get('wa')   || '628000000000';
-const msg   = params.get('msg')  || encodeURIComponent('Halo, saya ingin download aplikasi UMKM Admin gratis 🙏');
+// Nomor WA admin (fallback jika params kosong) — sesuaikan dengan nomor kamu
+const ADMIN_WA_FALLBACK = '6287779794633';
+const waNum = params.get('wa') || ADMIN_WA_FALLBACK;
+const msg   = params.get('msg')  || encodeURIComponent('Halo kak, saya ingin download aplikasi UMKM Admin gratis 🙏');
 
 // Greet user
 if(nama) {
@@ -160,7 +162,7 @@ const waLink = `https://wa.me/${waNum}?text=${msg}`;
 document.getElementById('btnWa').href = waLink;
 
 // Countdown + auto redirect
-let t = 5;
+let t = 15;
 const fill = document.getElementById('timerFill');
 const cd   = document.getElementById('countdown');
 fill.style.width = '100%';
